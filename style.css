@@ -1,14 +1,27 @@
+body{
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    background-image: url(imagens/titulo\ cardapio.PNG);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 150px;
+    opacity: 0,1;
+    background-color: #f4f4f4;
+}
+
+
+
+
+
 
 header{
     text-align: center;
     margin-bottom: 20px;
 }
 h1{
-    background-image: url(imagens/titulo\ cardapio.PNG);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: rgb(224, 224, 224);
+    
+    color: rgb(163, 91, 91);
     background-color: #ffffff;
     border-radius: 10px;
     margin-bottom: 80px;
