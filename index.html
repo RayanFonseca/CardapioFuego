@@ -10,25 +10,29 @@
 
     <header>
         <h1>Cardapio de Vinhos</h1>
-    </header>
+        <select id="filtro">
+            <option value="Todos">Todos</option>
+            <option value="Tinto">Tinto</option>
+            <option value="Rosé">Rosé</option>
+            <option value="Espumante">Espumante</option>
+        </select>
 
+    </header>
     <main class="container">
-        <div class="card">
+        <div class="wine-card" data-type="Tinto">
             <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 1">
             <h2>Adega Mae - Atlantico</h2>
-            <p>Vinho tinto</p>
-            <span class="Valor">R$ 45,00</span>
+            <p>Tinto</p>
+            <span class="valor">R$ 45,00</span>
         </div>
 
-        <div class="card">
+        <div class="wine-card" data-type="Rosé">
             <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 2">
-            <h2>Adega Mae 2</h2>
-            <p>Vinho Tinto Seco</p>
+            <h2>Adega Mae Rosé</h2>
+            <p>Rosé</p>
             <span class="valor">R$45,00</span>
         </div>
-
     </main>
-    
-
+    <script src="script.js"></script>
 </body>
 </html>
