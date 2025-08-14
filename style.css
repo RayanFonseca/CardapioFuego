@@ -1,5 +1,38 @@
+
+header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+h1{
+    background-image: url(imagens/titulo\ cardapio.PNG);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: rgb(224, 224, 224);
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 80px;
+    box-shadow: 0 4px 6px rgb(211, 47, 47);
+    font-size: 2rem;
+}
+
+
+
+.menu-card{
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgb(0, 0, 0,0.1);
+    transition: transform 0.2s ease;
+    padding-bottom: 10px;
+}   
+
+
+
+
+
 #filtro{
-    padding: 8px;
+    padding: 4px;
     border: 1px solid #ccc;
     border-radius: 10px;
     color: #030a14;
@@ -29,14 +62,7 @@ body{
     color:#333;
     padding: 20px;
 }
-header{
-    text-align: center;
-    margin-bottom: 30px;
-}
-h1{
-    font-size: 2rem;
-    color: #c0392b;
-}
+
 .container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
