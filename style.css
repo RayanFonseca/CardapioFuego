@@ -2,12 +2,11 @@ body{
     font-family: Arial, sans-serif;
     color: #333;
     padding: 20px;
-    background-image: url(imagens/titulo\ cardapio.PNG);
+    background-image: url(); /*adcionar fundo da pagina depois*/
     background-repeat: repeat;
     background-position: center;
-    background-size: 150px;
-    opacity: 0,1;
-    background-color: #f4f4f4;
+    background-size: 150px 150px;
+    background-color: #2e0b0b;
 }
 
 
@@ -38,42 +37,80 @@ h1{
     box-shadow: 0 4px 6px rgb(0, 0, 0,0.1);
     transition: transform 0.2s ease;
     padding-bottom: 10px;
-}   
+}  
 
-
-
-
-
-#filtro{
-    padding: 4px;
-    border: 1px solid #ccc;
+.filter-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+    background-color: #ffffff;
+    padding: 10px;
     border-radius: 10px;
-    color: #030a14;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
-#filtro:focus{
+.icon-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background:#ffffff;
+    color: #810d00;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    border-color: #a0aec0;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.1s, background-color 0.2s;
+
+}
+.icon-btn:hover{
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+    transform: translateY(-1px);
 }
 
-
-
-
-
+@media(max-width:480px){
+    .filter-bar{padding: 0 10px;}
+    #searchInput{max-width:100%}
+}
+.filter-panel{
+    position:absolute;
+    top:100px;
+    left:50%;
+    transform:translateX(-50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    width: 300px;
+    text-align: center; 
+}
+.filter-panel select{
+    width:100%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px; 
+}
+.filter-panel button{
+    background: #810d00;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.filter-panel button:hover{
+    background: #a00d00;
+}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-body{
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color:#333;
-    padding: 20px;
 }
 
 .container{
@@ -88,6 +125,7 @@ body{
     box-shadow: 0 4px 6px rgb(0, 0, 0,0.1);
     transition: transform 0.2s ease;
     padding-bottom: 10px;
+    cursor: pointer;
 }   
 .wine-card:hover{
 transform: scale(1.03);
@@ -114,4 +152,7 @@ transform: scale(1.03);
     color: #27ae60;
     margin: 0 10px;
     display: inline-block;
+}
+.hidden{
+    display: none;
 }

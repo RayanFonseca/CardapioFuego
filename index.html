@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cardapio de Vinhos</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Cardapio dos Vinhos</h1>
-        <select id="filtro">
-            <option value="Todos">Todos</option>
-            <option value="Tinto">Tinto</option>
-            <option value="Rosé">Rosé</option>
-            <option value="Espumante">Espumante</option>
-        </select>
-        <p>
-            
-        </p>
-        
+      <h1>Cardapio dos Vinhos</h1>
+      <div class="filter-bar">
+        <button id="filterBtn" class="icon-btn" aria-label="Abrir Filtros">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+            <path d="M3 4h18l-7 8v6l-4 4v-10L3 4z" fill="currentColor"></path>
+          </svg>
+        </button>
+        <input type="text" id="searchInput" placeholder="Buscar Vinho...." />
+      </div>
     </header>
-    <main class="container">
-        <div class="wine-card" data-type="Tinto">
-            <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 1">
-            <h2>Adega Mae - Atlantico</h2>
-            <p>Tinto</p>
-            <span class="valor">R$ 45,00</span>
-        </div>
+<div id="filterPanel" class="hidden filter-panel">
+  <h3>Filtros Avançados</h3>
+  <select id="typeFilter">
+    <option value="Tipo">Todos os Tipos</option>
+    <option value="Tinto">Tinto</option>
+    <option value="Rosé">Rosé</option>
+    <option value="Espumante">Espumante</option>
+  </select>
+  <select id="uvaFilter">
+    <option value="Uva">Todas as Uvas</option>
+    <option value="Malbec">Malbec</option>
+    <option value="Chardonnay">Chardonnay</option>
+  </select>
+  <select id="paisFilter">
+    <option value="pais">Todos os Países</option>
+    <option value="portugal">Portugal</option>
+    <option value="chile">Chile</option>
+  </select>
+  <button id="applyFilters"></button>Aplicar Filtros></button>
+</div>
 
-        <div class="wine-card" data-type="Rosé">
-            <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 2">
-            <h2>Adega Mae Rosé</h2>
-            <p>Rosé</p>
-            <span class="valor">R$45,00</span>
-        </div>
+    <main class="container">
+      <div class="wine-card" data-type="Tinto">
+        <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 1" />
+        <h2>Adega Mae - Atlantico</h2>
+        <p>Rosé</p>
+        <p>Uva:Chardonnay</p>
+        <p>País: Argentina</p>
+        <span class="valor">R$ 45,00</span>
+      </div>
+
+      <div class="wine-card" data-type="Rosé">
+        <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 2" />
+        <h2>Adega Mae Rosé</h2>
+        <p>Tinto</p>
+        <p>Uva: Malbec </p>
+        <p>País: Portugal</p> 
+        <span class="valor">R$45,00</span>
+      </div>
     </main>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
