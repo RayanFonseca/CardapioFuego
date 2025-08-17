@@ -1,4 +1,4 @@
-body{
+body {
     font-family: Arial, sans-serif;
     color: #333;
     padding: 20px;
@@ -9,17 +9,11 @@ body{
     background-color: #2e0b0b;
 }
 
-
-
-
-
-
-header{
+header {
     text-align: center;
     margin-bottom: 20px;
 }
-h1{
-    
+h1 {
     color: rgb(163, 91, 91);
     background-color: #ffffff;
     border-radius: 10px;
@@ -28,18 +22,16 @@ h1{
     font-size: 2rem;
 }
 
-
-
-.menu-card{
+.menu-card {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgb(0, 0, 0,0.1);
+    box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
     padding-bottom: 10px;
-}  
+}
 
-.filter-bar{
+.filter-bar {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,52 +41,55 @@ h1{
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
 }
-.icon-btn{
+
+.icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 42px;
     height: 42px;
-    background:#ffffff;
+    background: #ffffff;
     color: #810d00;
     border: 1px solid #ddd;
     border-radius: 10px;
     cursor: pointer;
     transition: box-shadow 0.2s, transform 0.1s, background-color 0.2s;
-
 }
-.icon-btn:hover{
+
+.icon-btn:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
     transform: translateY(-1px);
 }
 
-@media(max-width:480px){
-    .filter-bar{padding: 0 10px;}
-    #searchInput{max-width:100%}
+@media (max-width: 480px) {
+    .filter-bar { padding: 0 10px; }
+    #searchInput { max-width: 100%; }
 }
-.filter-panel{
-    position:absolute;
-    top:100px;
-    left:50%;
-    transform:translateX(-50%);
+
+.filter-panel {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     z-index: 1000;
     width: 300px;
-    text-align: center; 
+    text-align: center;
 }
-.filter-panel select{
-    width:100%;
+
+.filter-panel select {
+    width: 100%;
     margin-bottom: 10px;
     padding: 5px;
     border: 1px solid #ddd;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
-.filter-panel button{
+
+.filter-panel button {
     background: #810d00;
     color: #ffffff;
     border: none;
@@ -103,56 +98,64 @@ h1{
     cursor: pointer;
     transition: background 0.2s;
 }
-.filter-panel button:hover{
+
+.filter-panel button:hover {
     background: #a00d00;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
-.wine-card{
+
+.wine-card {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgb(0, 0, 0,0.1);
+    box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
     padding-bottom: 10px;
     cursor: pointer;
-}   
-.wine-card:hover{
-transform: scale(1.03);
 }
-.wine-card img{
+
+.wine-card:hover {
+    transform: scale(1.03);
+}
+
+.wine-card img {
     width: 100%;
     max-width: 100%;
     height: 200px;
     object-fit: cover;
 }
-.wine-card h2{
+
+.wine-card h2 {
     font-size: 1.4rem;
     margin: 0 10px 10px;
     text-align: center;
 }
-.wine-card p{
+
+.wine-card p {
     font-size: 1.2rem;
     margin: 0 10px 10px;
     color: #800000;
 }
-.valor{
+
+.valor {
     font-weight: bold;
     font-size: 1rem;
     color: #27ae60;
     margin: 0 10px;
     display: inline-block;
 }
-.hidden{
+
+.hidden {
     display: none;
 }

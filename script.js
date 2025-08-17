@@ -41,15 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const pais = document.getElementById('paisFilter').value.toLowerCase();
         console.log('Aplicando filtros:', { type, uva, pais });
 
+        // Reinicializa todos os cards
+        wineCards.forEach((card) => card.classList.remove('hidden'));
+
         wineCards.forEach((card) => {
             const cardType = card.querySelector('p')?.textContent.toLowerCase() || '';
-            const cardUva = card.querySelector('span')?.textContent.toLowerCase() || ''; // Placeholder, substitua por <p> de uva
-            const cardPais = ''; // Placeholder, adicione <p> para país
+            const cardUva = card.querySelectorAll('p')[1]?.textContent.toLowerCase().replace('uva: ', '') || '';
+            const cardPais = card.querySelectorAll('p')[2]?.textContent.toLowerCase().replace('país: ', '') || '';
+            console.log('Card Values:', { cardType, cardUva, cardPais });
 
-            // Só aplica filtro se o campo tiver valor
-            const matches = (type === '' || (type && cardType.includes(type))) &&
-                            (uva === '' || (uva && cardUva.includes(uva))) &&
-                            (pais === '' || (pais && cardPais.includes(pais)));
+            const hasFilters = type !== '' || uva !== '' || pais !== '';
+            const matches = (!hasFilters || // Mostra todos se não há filtros
+                            (type === '' || cardType.includes(type)) &&
+                            (uva === '' || cardUva.includes(uva)) &&
+                            (pais === '' || cardPais.includes(pais)));
 
             if (matches) {
                 card.classList.remove('hidden');

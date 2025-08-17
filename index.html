@@ -18,42 +18,40 @@
         <input type="text" id="searchInput" placeholder="Buscar Vinho...." />
       </div>
     </header>
-<div id="filterPanel" class="hidden filter-panel">
-  <h3>Filtros Avançados</h3>
-  <select id="typeFilter">
-    <option value="Tipo">Todos os Tipos</option>
-    <option value="Tinto">Tinto</option>
-    <option value="Rosé">Rosé</option>
-    <option value="Espumante">Espumante</option>
-  </select>
-  <select id="uvaFilter">
-    <option value="Uva">Todas as Uvas</option>
-    <option value="Malbec">Malbec</option>
-    <option value="Chardonnay">Chardonnay</option>
-  </select>
-  <select id="paisFilter">
-    <option value="pais">Todos os Países</option>
-    <option value="portugal">Portugal</option>
-    <option value="chile">Chile</option>
-  </select>
-  <button id="applyFilters"></button>Aplicar Filtros></button>
-</div>
-
+    <div id="filterPanel" class="hidden filter-panel">
+      <h3>Filtros Avançados</h3>
+      <select id="typeFilter">
+        <option value="">Todos os Tipos</option>
+        <option value="tinto">Tinto</option>
+        <option value="rosé">Rosé</option>
+        <option value="espumante">Espumante</option>
+      </select>
+      <select id="uvaFilter">
+        <option value="">Todas as Uvas</option>
+        <option value="malbec">Malbec</option>
+        <option value="chardonnay">Chardonnay</option>
+      </select>
+      <select id="paisFilter">
+        <option value="">Todos os Países</option>
+        <option value="portugal">Portugal</option>
+        <option value="chile">Chile</option>
+      </select>
+      <button id="applyFilters">Aplicar Filtros</button>
+    </div>
     <main class="container">
-      <div class="wine-card" data-type="Tinto">
+      <div class="wine-card" data-type="rosé">
         <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 1" />
         <h2>Adega Mae - Atlantico</h2>
         <p>Rosé</p>
-        <p>Uva:Chardonnay</p>
+        <p>Uva: Chardonnay</p>
         <p>País: Argentina</p>
         <span class="valor">R$ 45,00</span>
       </div>
-
-      <div class="wine-card" data-type="Rosé">
+      <div class="wine-card" data-type="tinto">
         <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 2" />
         <h2>Adega Mae Rosé</h2>
         <p>Tinto</p>
-        <p>Uva: Malbec </p>
+        <p>Uva: Malbec</p>
         <p>País: Portugal</p> 
         <span class="valor">R$45,00</span>
       </div>
