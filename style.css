@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Fonte atrativa para texto geral */
     color: #333;
     padding: 20px;
     background-image: url(); /*adcionar fundo da pagina depois*/
@@ -20,6 +20,7 @@ h1 {
     margin-bottom: 80px;
     box-shadow: 0 4px 6px rgb(211, 47, 47);
     font-size: 2rem;
+    font-family: 'Montserrat', sans-serif; /* Fonte atrativa para títulos */
 }
 
 .menu-card {
@@ -79,28 +80,6 @@ h1 {
     z-index: 1000;
     width: 300px;
     text-align: center;
-    position: relative;
-}
-.filter-panel .close-btn{
-    position: absolute;
-    top:10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    background-color: #e74c3c;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition:background-color 0.2s;
-    z-index: 1001;
-}
-.filter-panel .close-btn:hover{
-    background-color: #c0392b;
 }
 
 .filter-panel select {
@@ -145,6 +124,21 @@ h1 {
     transition: transform 0.2s ease;
     padding-bottom: 10px;
     cursor: pointer;
+    position: relative; /* Para posicionar a bandeira */
+}
+.wine-card::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background: url(imagens/logomaior.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size:contain;
+    opacity: 10%;
+    pointer-events: none;
 }
 
 .wine-card:hover {
@@ -162,20 +156,35 @@ h1 {
     font-size: 1.4rem;
     margin: 0 10px 10px;
     text-align: center;
+    font-family: 'Montserrat', sans-serif; /* Fonte atrativa para títulos */
 }
 
-.wine-card p {
-    font-size: 1.2rem;
-    margin: 0 10px 10px;
-    color: #800000;
+.wine-card .info-tipo, .wine-card .info-uva, .wine-card .info-pais{
+    font-size: 1rem;
+    margin: 0 10px 5px;
+    color: #980000;
+    font-style: italic; /* Mais bonito e organizado */
+    border-bottom: 1px solid #eee; /* Linha separadora para organização */
+    padding-bottom: 5px;
+    box-shadow: inset 0 -1px rgba(255, 0, 0, 0.416);
 }
 
-.valor {
+
+.wine-card .valor {
     font-weight: bold;
     font-size: 1rem;
     color: #27ae60;
     margin: 0 10px;
     display: inline-block;
+}
+
+.country-flag {
+    margin-left: 10px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hidden {
