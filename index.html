@@ -9,16 +9,17 @@
   <body>
     <header>
       <h1>Cardapio dos Vinhos</h1>
-      <div class="filter-bar">
+      <section class="filter-bar">
         <button id="filterBtn" class="icon-btn" aria-label="Abrir Filtros">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
             <path d="M3 4h18l-7 8v6l-4 4v-10L3 4z" fill="currentColor"></path>
           </svg>
         </button>
         <input type="text" id="searchInput" placeholder="Buscar Vinho...." />
-      </div>
+      </section>
     </header>
-    <div id="filterPanel" class="hidden filter-panel">
+    <section id="filterPanel" class="filter-panel">
+      <button id="closeFilterPanel" class="close-btn" aria-label = 'Fechar Filtros'>X</button>
       <h3>Filtros Avançados</h3>
       <select id="typeFilter">
         <option value="">Todos os Tipos</option>
@@ -37,24 +38,24 @@
         <option value="chile">Chile</option>
       </select>
       <button id="applyFilters">Aplicar Filtros</button>
-    </div>
+    </section>
     <main class="container">
-      <div class="wine-card" data-type="rosé">
+      <section class="wine-card" data-type="rosé">
         <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 1" />
         <h2>Adega Mae - Atlantico</h2>
         <p>Rosé</p>
         <p>Uva: Chardonnay</p>
         <p>País: Argentina</p>
         <span class="valor">R$ 45,00</span>
-      </div>
-      <div class="wine-card" data-type="tinto">
+      </section>
+      <section class="wine-card" data-type="tinto">
         <img src="imagens/CASAFUEGO3819.jpg" alt="Prato 2" />
         <h2>Adega Mae Rosé</h2>
         <p>Tinto</p>
         <p>Uva: Malbec</p>
         <p>País: Portugal</p> 
         <span class="valor">R$45,00</span>
-      </div>
+      </section>
     </main>
     <script src="script.js"></script>
   </body>

@@ -65,4 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('filterPanel').classList.add('hidden');
     });
+
+    document.getElementById('closeFilterPanel').addEventListener('click', () => {
+        const panel = document.getElementById('filterPanel');
+        panel.classList.add('hidden');
+        console.log('Painel de filtros fechado');
+    });
 });
