@@ -43,7 +43,28 @@ h1 {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.tag.filter{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.tag-btn{
+    background-color: #810d00;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.tag-btn:hover{
+    background-color: #a00d00;
+    transform: scale(1.05);
+}
+.tag-btn.active{
+    background-color: #a00d00;
+}
 .icon-btn {
     display: inline-flex;
     align-items: center;
