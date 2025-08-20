@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const wineCards = document.querySelectorAll('.wine-card');
-    const filterBtn = document.getElementById('filterBtn');
     const suggestionList = document.getElementById("wineSuggestion");
-    const tagBTns = document.querySelectorAll(".tag-btn");
+    const tagBtns = document.querySelectorAll(".tag-btn");
     if (!searchInput) {
         console.error('Erro: Elemento #searchInput não encontrado.');
         return;
@@ -22,11 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             wineCards.forEach((card)=>{
                 const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
-                const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
-                const haystack = `${title} ${desc}`;
-
-                
-                if (haystack.includes(term)){
+                if (title.includes(term)){
                     card.classList.remove('hidden');
                 }else{
                     card.classList.add('hidden');
@@ -34,18 +29,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
        
-        tagBTns.forEach((btn)=>{
+        tagBtns.forEach((btn)=>{
             btn.addEventListener('click', ()=>{
-                const selectedType = btn.dataset.type.toLowerCase();
-                console.log('Filtrando por tag:', selectedType);
+                const filterValue = btn.dataset.filter.toLowerCase();
+                console.log('Filtrando por tag:', filterValue);
 
-                tagBTns.forEach((b)=> b.classList.remove('active'));
+                tagBtns.forEach((b)=> b.classList.remove('active'));
                 btn.classList.add('active');
 
                 wineCards.forEach((card)=>{
                     const cardType = card.dataset.type.toLowerCase();
+                    const cardUva = card.dataset.uva.toLowerCase();
+                    const cardPais  = card.dataset.pais.toLowerCase();
+        
 
-                    if (selectedType === 'all' || cardType === selectedType){
+                    if (filterValue === 'all' || 
+                        cardType === filterValue ||
+                        cardUva === filterValue ||
+                        cardPais === filterValue) {
                         card.classList.remove('hidden');
                     }else {
                         card.classList.add('hidden');
