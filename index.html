@@ -13,10 +13,11 @@
         <input type="text" id="searchInput" list="wineSuggestion" placeholder="Buscar vinho...." />
         <datalist id="wineSuggestion"></datalist><!--sugestoa de auto complete-->
       <section class="tag-filter">
-        <button class ="tag-btn" data-type="all">Todos</button>
-        <button class ="tag-btn" data-type="tinto">Tinto</button>
-        <button class ="tag-btn" data-type="rosé">Rosé</button>
-        <button class ="tag-btn" data-type="espumante">Espumante</button>
+        <button class="tag-btn" data-filter="all">Todos</button>
+            <button class="tag-btn" data-filter="tinto">Tinto</button>
+            <button class="tag-btn" data-filter="rosé">Rosé</button>
+            <button class="tag-btn" data-filter="espumante">Espumante</button>
+            <button class="tag-btn" data-filter="chardonnay">Chardonnay</button>
       </section>
     </header>
     <section id="filterPanel" class="hidden filter-panel">
@@ -41,45 +42,34 @@
       <button id="applyFilters">Aplicar Filtros</button>
     </section>
     <main class="container">
-      <section class="wine-card" data-type="malbec">
+      
+      <section class="wine-card" data-type="tinto" data-uva="malbec" data-pais="Argentina">
         <img src="imagens/angelicazapata.jpg" alt="angelicazapata" />
-        
         <h2>Angelica Zapata<span class="flag-icon flag-icon-ar country-flag"></span></h2>
-        <p class="info-tipo">Tipo: Tinto</p>
-        <p class="info-uva">Uva: Malbec</p>
-        <p class="info-pais">País: Argentina</span></p> 
         <span class="valor">R$ 45,00</span>
       </section>
-      <section class="wine-card" data-type="tinto">
+      
+      <section class="wine-card" data-type="tinto" data-uva="malbec" data-pais="argentin">
         <img src="imagens/classico.jpg" alt="classico carbenet sauvignon" />
         <h2>Clásico<span class="flag-icon flag-icon-cl country-flag"></span></h2>
-        <p class="info-tipo">Tipo: Tinto</p>
-        <p class="info-uva">Uva: Malbec</p>
-        <p class="info-pais">País: Argentina</p> 
         <span class="valor">R$45,00</span>
       </section>
-      <section class="wine-card" data-type="tinto">
+
+      <section class="wine-card" data-type="tinto" data-uva="arinto, síria e fernão pires" data-pais="portugal">
         <img src="imagens/elenemigo.jpg" alt="el enemigo" />
-        <h2>El Enemigo<span class="flag-icon flag-icon-ar country-flag"></span></h2>
-        <p class="info-tipo">Tipo: Tinto</p>
-        <p class="info-uva">Uva: Chardonnay</p>
-        <p class="info-pais">País: Argentina</p> 
+        <h2>El Enemigo<span class="flag-icon flag-icon-ar country-flag"></span></h2> 
         <span class="valor">R$45,00</span>
       </section>
-      <section class="wine-card" data-type="tinto">
+
+      <section class="wine-card" data-type="branco" data-uva="arinto, síria e fernao pires" data-pais="portugal">
         <img src="imagens/casteloestremozbranco.jpg" alt="ecastlo de estremoz" />
         <h2>Castelo de Estremoz<span class="flag-icon flag-icon-pt country-flag"></span></h2>
-        <p class="info-tipo">Tipo: Branco.</p>
-        <p class="info-uva">Uva: Arinto, Síria e Fernão Pires.</p>
-        <p class="info-pais">País: Portugal.</p> 
         <span class="valor">R$45,00</span>
       </section>
-      <section class="wine-card" data-type="rosé">
+      <section class="wine-card" data-type="rosé" data-uva="castelao" data-pais="portugal">
         <img src="imagens/confidencialrosé.jpg" alt="ecastlo de estremoz" />
         <h2>Confidencial<span class="flag-icon flag-icon-pt country-flag"></span></h2>
-        <p class="info-tipo">Tipo: Rosé</p>
-        <p class="info-uva">Uva: Castelão</p>
-        <p class="info-pais">País: Portugal</p> 
+       
         <span class="valor">R$45,00</span>
       </section>
     </main>
