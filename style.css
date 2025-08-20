@@ -2,9 +2,9 @@ body {
     font-family: 'Roboto', sans-serif; /* Fonte atrativa para texto geral */
     color: #333;
     padding: 20px;
-    background-image: url(); /*adcionar fundo da pagina depois*/
+    background-image: url(imagens/betacinza.jpeg); /*adcionar fundo da pagina depois*/
     background-repeat: repeat;
-    background-position: center;
+    background-position: 100px;
     background-size: 150px 150px;
     background-color: #2e0b0b;
 }
@@ -21,6 +21,7 @@ h1 {
     box-shadow: 0 4px 6px rgb(211, 47, 47);
     font-size: 2rem;
     font-family: 'Montserrat', sans-serif; /* Fonte atrativa para títulos */
+    
 }
 
 .menu-card {
