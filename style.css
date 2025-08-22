@@ -139,6 +139,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
+    
 }
 
 .wine-card {
@@ -150,6 +151,7 @@ h1 {
     padding-bottom: 5px;
     cursor: pointer;
     position: relative; /* Para posicionar a bandeira */
+    min-height: 280px;
     
 }
 .wine-card::after{
@@ -181,6 +183,7 @@ h1 {
 }
 
 .wine-card h2 {
+    min-height: 3.2em;
     font-size: 1.4rem;
     margin: 0 10px 10px;
     text-align: center;
@@ -208,6 +211,7 @@ h1 {
     color: #27ae60;
     margin: 0 10px;
     display: inline-block;
+
 }
 
 .country-flag {
