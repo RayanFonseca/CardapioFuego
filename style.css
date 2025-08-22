@@ -224,7 +224,7 @@ h1 {
 }
 @media (max-width:480px){
     .container{
-        grit-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
     }
 }
