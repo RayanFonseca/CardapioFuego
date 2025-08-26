@@ -13,6 +13,17 @@ header {
     text-align: center;
     margin-bottom: 20px;
 }
+.logo{
+    margin-bottom: 20px;
+
+}
+.logo-img{
+    border-radius: 150px;
+    max-width: 600px;
+    width: 100%;
+    height:auto;
+    border-bottom: 2px solid #d4a017;
+}
 h1 {
     color: rgb(163, 91, 91);
     background-color: #ffffff;
@@ -32,18 +43,6 @@ h1 {
     transition: transform 0.2s ease;
     padding-bottom: 10px;
 
-}
-
-.filter-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 12px;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .tag.filter{
     display: flex;

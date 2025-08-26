@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cardapio de Vinhos</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
   </head>
   <body>
     <header>
-      <h1>Cardapio dos vinhos</h1>
-        <input type="text" id="searchInput" list="wineSuggestion" placeholder="Buscar vinho...." />
+      <div class="logo">
+        <img src="imagens/logo.PNG" alt="Casa Fuego Vino e Parrilla Logo" class="logo-img">
+      </div>
+      <h1>Casa Fuego - Vino & Parrila</h1>
+        <input type="text" id="searchInput" list="wineSuggestion" placeholder="Buscar vinho...." class="search-input" />
         <datalist id="wineSuggestion"></datalist><!--sugestoa de auto complete-->
       <section class="tag-filter">
         <button class="tag-btn" data-filter="all">Todos</button>
