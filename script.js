@@ -21,11 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // =====================
   // AUTOCOMPLETE PESQUISA
   // =====================
-  if (!searchInput) {
-    console.error('Erro: Elemento #searchInput não encontrado.');
-    return;
-  }
-
   wineCards.forEach((card) => {
     const title = card.querySelector('h2')?.textContent || '';
     if (title) {
@@ -37,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   searchInput.addEventListener('input', (e) => {
     const term = e.target.value.trim().toLowerCase();
-    console.log('Buscando por:', term);
 
     wineCards.forEach((card) => {
       const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
@@ -55,14 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
   tagBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       const filterValue = btn.dataset.filter.toLowerCase();
-      console.log('Filtrando por tag:', filterValue);
 
       tagBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
 
       wineCards.forEach((card) => {
         const cardType = card.dataset.type.toLowerCase();
-        const cardUva = card.dataset.uva.toLowerCase();
+        const cardUva  = card.dataset.uva.toLowerCase();
         const cardPais = card.dataset.pais.toLowerCase();
 
         if (
@@ -104,10 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       popupTitle.textContent = card.querySelector('h2').textContent;
       popupHarmonizacao.textContent = card.dataset.harmonizacao || 'Não informado';
-      barLeveza.style.width    = `${card.dataset.leveza || 0}%`;
+
+      // Barras de intensidade (com fallback de 0 se não houver dado)
+      barLeveza.style.width    = `${card.dataset.leveza   || 0}%`;
       barSuavidade.style.width = `${card.dataset.suavidade || 0}%`;
-      barSeco.style.width      = `${card.dataset.seco || 0}%`;
-      barMaciez.style.width    = `${card.dataset.maciez || 0}%`;
+      barSeco.style.width      = `${card.dataset.seco     || 0}%`;
+      barMaciez.style.width    = `${card.dataset.maciez   || 0}%`;
 
       winePopup.classList.add('show');
     });
@@ -118,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     winePopup.classList.remove('show');
   });
 
-  // Fechar clicando fora
+  // Fechar clicando fora do conteúdo
   winePopup.addEventListener('click', (e) => {
     if (!winePopup.querySelector('.wine-popup-content').contains(e.target)) {
       winePopup.classList.remove('show');
