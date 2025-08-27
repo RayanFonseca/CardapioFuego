@@ -57,5 +57,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    
+    window.addEventListener('scroll', ()=>{
+        if (window.scrollY > 300){
+            backToTop.classList.add('show');
+        }else{
+            backToTop.classList.remove('show');
+        }
+    });
+    backToTop.addEventListener('click', ()=>{
+        window.scrollTo({
+            top: 0,
+            behavior:'smooth'
+        });
+    });
+
+    wineCards.forEach((card) =>{
+        card.addEventListener('click', (e)=>{
+            e.preventDefault();
+            popupTitle.textContent = card.querySelector('h2').textContent;
+            popupHarmonizacao.textContent = card.dataset.harmonizacao;
+            barLeveza.style.width= `${card.dataset.leveza}%`;
+            barSuavidade.style.width=`${card.dataset.suavidade}%`;
+            barMaciez.style.width=`${card.dataset.maciez}%`;
+            winePopup.classList.add('show');
+
+        });
+    });
+    closePopup.addEventListener('click', ()=>{
+        winePopup.classList.remvoe('show');
+    });
+    window.addEventListener('click', (e)=>{
+        if(!winePopup.contains(e.target) && e.target !== winePopup){
+            winePopup.classList.remove('show');
+        }
+    })
+
+
     });
