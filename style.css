@@ -1,44 +1,33 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+body {
   font-family: 'Roboto', sans-serif;
   color: #f0ece2;
+  margin: 0;
+  padding: 20px;
   background: linear-gradient(135deg, #1a1a1a 0%, #2e0b0b 80%);
   min-height: 100vh;
-  padding: 15px;
 }
 
-/* ------------------------
-   HEADER / LOGO
--------------------------*/
 header {
   text-align: center;
   margin-bottom: 20px;
 }
 
 .logo {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .logo-img {
-  border-radius: 50%;
-  max-width: 90vw;   /* ocupa até 90% da tela no celular */
+  border-radius: 150px;
+  max-width: 600px;
+  width: 100%;
   height: auto;
   border-bottom: 2px solid #d4a017;
 }
 
-/* ------------------------
-   BARRA DE PESQUISA
--------------------------*/
 .search-input {
   width: 100%;
-  padding: 10px 20px;
+  max-width: 600px;
+  padding: 10px 30px;
   border: none;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.9);
@@ -50,18 +39,15 @@ header {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }
-
 .search-input:focus {
   box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.4);
 }
 
-/* ------------------------
-   TAGS DE FILTRO
--------------------------*/
-.tag-filter {
+.tag.filter {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 10px;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
@@ -74,139 +60,146 @@ header {
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
+  margin-bottom: 2%;
   font-family: 'Roboto', sans-serif;
 }
-
 .tag-btn:hover {
   background-color: #810d00;
   transform: scale(1.05);
 }
-
 .tag-btn.active {
   background-color: #390505;
 }
+.tag-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.4);
+  border-radius: 20px;
+}
 
-/* ------------------------
-   GRID DE VINHOS
--------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* GRID AJUSTADO */
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* no celular, 2 colunas */
-  gap: 15px;
-  max-width: 100%;
+  grid-template-columns: repeat(2, 1fr); /* sempre 2 cards por linha */
+  gap: 25px;
+  max-width: 1000px; /* largura máxima para não ficar muito largo */
+  margin: 0 auto;
 }
 
 .wine-card {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-bottom: 10px;
   cursor: pointer;
   position: relative;
-  padding-bottom: 5px;
+  min-height: 380px; /* altura mínima maior */
 }
 
 .wine-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
 }
 
 .wine-card img {
   width: 100%;
-  height: 160px;
+  height: 220px; /* imagem maior */
   object-fit: cover;
 }
 
 .wine-card h2 {
-  font-size: 1.1rem;
-  margin: 8px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  margin: 10px 0;
   text-align: center;
   color: rgb(84, 10, 10);
 }
 
 .country-flag {
-  margin-left: 6px;
-  font-size: 20px;
+  margin-left: 10px;
+  font-size: 25px;
+  padding: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
 }
 
 .wine-card .valor {
-  font-weight: 600;  
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 1.3rem;
   color: #246e04;
-  margin: 5px 10px;
+  margin: 10px;
   display: inline-block;
 }
 
-.hidden {
-  display: none;
-}
-
-/* ------------------------
-   BOTÃO VOLTAR AO TOPO
--------------------------*/
+/* BOTÃO VOLTAR AO TOPO */
 .back-to-top {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 20px;
+  right: 20px;
   background-color: #810d00;
   color: #ffffff;
   border: none;
-  padding: 12px;
+  padding: 10px 15px;
   border-radius: 50%;
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px);
   z-index: 1000;
 }
-
+.back-to-top:hover {
+  background-color: #a00d00;
+  transform: translateY(15px);
+}
 .back-to-top.show {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.back-to-top:hover {
-  background-color: #a00d00;
-}
-
-/* ------------------------
-   POPUP DOS VINHOS
--------------------------*/
+/* POPUP */
 .wine-popup {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.4); /* fundo escuro */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
   z-index: 9999;
 }
-
 .wine-popup.show {
   opacity: 1;
   pointer-events: auto;
 }
-
 .wine-popup-content {
   background: rgba(255, 255, 255, 0.95);
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   max-width: 400px;
+  width: 90%;
   text-align: center;
   color: #000;
+  font-family: 'Roboto', sans-serif;
   position: relative;
 }
-
 .close-popup {
   position: absolute;
   top: 10px;
@@ -218,12 +211,12 @@ header {
   cursor: pointer;
 }
 
-/* Intensidade */
+/* BARRAS DE INTENSIDADE */
 .intensity-bars {
   margin-top: 15px;
 }
 .intensity-bar {
-  margin: 8px 0;
+  margin: 10px 0;
   text-align: left;
 }
 .intensity-bar span {
@@ -235,7 +228,7 @@ header {
   display: inline-block;
   width: 150px;
   height: 10px;
-  background:#eee;
+  background: #eee;
   border-radius: 5px;
   overflow: hidden;
   vertical-align: middle;
@@ -246,15 +239,15 @@ header {
   transition: width 0.3s ease;
 }
 
-/* ------------------------
-   MEDIA QUERIES
--------------------------*/
-@media (min-width: 768px) {
+/* MOBILE */
+@media (max-width: 600px) {
   .container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr; /* 1 card por linha */
     gap: 20px;
-    max-width: 90%;
-    margin: 0 auto;
+  }
+
+  .wine-card {
+    min-height: 360px;
   }
 
   .wine-card img {
@@ -263,15 +256,5 @@ header {
 
   .wine-card h2 {
     font-size: 1.3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .logo-img {
-    max-width: 400px;
-  }
-
-  .container {
-    max-width: 1200px;
   }
 }
