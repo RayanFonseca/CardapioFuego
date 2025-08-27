@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     closePopup.addEventListener('click', ()=>{
-        winePopup.classList.remvoe('show');
+        winePopup.classList.remove('show');
     });
     window.addEventListener('click', (e)=>{
         if(!winePopup.contains(e.target) && e.target !== winePopup){
