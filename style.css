@@ -39,9 +39,7 @@ header {
     transition: box-shadow 0.3s ease;
 }
 .search-input:focus{
-    outline: none;
     box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.4);
-    border-radius: 20px;
 }
 h1 {
     color: rgb(163, 91, 91);
@@ -101,6 +99,12 @@ h1 {
 .tag-btn.active{
     background-color: #390505;
 }
+.tag-btn:focus{
+outline: none;
+box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.4);
+border-radius: 20px;
+}
+
 .icon-btn {
     display: inline-flex;
     align-items: center;
