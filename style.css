@@ -143,7 +143,7 @@ h1 {
 }
 
 .wine-card {
-    background:rgba(255, 255, 255, 0.5);
+    background:rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgb(0, 0, 0, 0.4);
@@ -197,11 +197,14 @@ h1 {
 
 .country-flag{
     margin-left:10px;
-    font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 25px;
     padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: #1a1a1a;
+    box-shadow: black;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    
 }
 
 .wine-card .info-tipo, .wine-card .info-uva, .wine-card .info-pais{
@@ -218,20 +221,12 @@ h1 {
 .wine-card .valor {
     font-weight: 500;  
     font-size: 1.1rem;
-    color: #f0ece2;
+    color: #a78737;
     margin: 7px ;
     border-radius: 10px;
     display: inline-block;
 }
 
-.country-flag {
-    margin-left: 10px;
-    font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px;
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
 
 .hidden {
     display: none;
