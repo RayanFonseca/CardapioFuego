@@ -3,7 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const wineCards = document.querySelectorAll('.wine-card');
     const suggestionList = document.getElementById('wineSuggestion');
     const tagBtns = document.querySelectorAll('.tag-btn');
-
+    const backToTop = document.getElementById('backToTop');
+    const winePopup = document.getElementById('winePopup');
+    const popupTitle = document.getElementById('popupTitle');
+    const popupHarmonizacao = document.getElementById('popupHarmonizacao');
+    const barLeveza = document.getElementById('barLeveza');
+    const barSuavidade = document.getElementById('barSuavidade');
+    const barSeco = document.getElementById('barSeco');
+    const barMaciez = document.getElementById('barMaciez');
+    const closePopup = document.querySelector('.close-popup');
 
     if (!searchInput) {
         console.error('Erro: Elemento #searchInput não encontrado.');
@@ -21,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.trim().toLowerCase();
-        console.log('Buscando por:', term);
-
         wineCards.forEach((card) => {
             const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
             if (title.includes(term)) {
@@ -36,20 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     tagBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
             const filterValue = btn.dataset.filter.toLowerCase();
-            console.log('Filtrando por tag:', filterValue);
-
             tagBtns.forEach((b) => b.classList.remove('active'));
             btn.classList.add('active');
-
             wineCards.forEach((card) => {
                 const cardType = card.dataset.type.toLowerCase();
                 const cardUva = card.dataset.uva.toLowerCase();
                 const cardPais = card.dataset.pais.toLowerCase();
-
-                if (filterValue === 'all' ||
-                    cardType === filterValue ||
-                    cardUva === filterValue ||
-                    cardPais === filterValue) {
+                if (filterValue === 'all' || cardType === filterValue || cardUva === filterValue || cardPais === filterValue) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
@@ -57,40 +56,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    window.addEventListener('scroll', ()=>{
-        if (window.scrollY > 300){
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
             backToTop.classList.add('show');
-        }else{
+        } else {
             backToTop.classList.remove('show');
         }
     });
-    backToTop.addEventListener('click', ()=>{
-        window.scrollTo({
-            top: 0,
-            behavior:'smooth'
-        });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    wineCards.forEach((card) =>{
-        card.addEventListener('click', (e)=>{
-            e.preventDefault();
+    wineCards.forEach((card) => {
+        card.addEventListener('click', () => {
             popupTitle.textContent = card.querySelector('h2').textContent;
-            popupHarmonizacao.textContent = card.dataset.harmonizacao;
-            barLeveza.style.width= `${card.dataset.leveza}%`;
-            barSuavidade.style.width=`${card.dataset.suavidade}%`;
-            barMaciez.style.width=`${card.dataset.maciez}%`;
+            popupHarmonizacao.textContent = card.dataset.harmonizacao || 'Não especificado';
+            barLeveza.style.width = `${card.dataset.leveza || 50}%`;
+            barSuavidade.style.width = `${card.dataset.suavidade || 50}%`;
+            barSeco.style.width = `${card.dataset.seco || 50}%`;
+            barMaciez.style.width = `${card.dataset.macie || 50}%`;
             winePopup.classList.add('show');
-
+            console.log('Popup aberto para:', card.querySelector('h2').textContent); // Depuração
         });
     });
-    closePopup.addEventListener('click', ()=>{
+
+    closePopup.addEventListener('click', () => {
         winePopup.classList.remove('show');
     });
-    window.addEventListener('click', (e)=>{
-        if(!winePopup.contains(e.target) && e.target !== winePopup){
+
+    window.addEventListener('click', (e) => {
+        if (!winePopup.contains(e.target) && e.target !== winePopup) {
             winePopup.classList.remove('show');
         }
-    })
-
-
     });
+});
