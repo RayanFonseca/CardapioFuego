@@ -183,12 +183,15 @@ border-radius: 20px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    z-index: 1001;
+    z-index: 2000;
     width: 90%;
     max-width: 300px;
     text-align: center;
     color: #a1a1a1;
     font-family: 'Roboto', sans-serif;
+}
+.wine-poup.debug{
+    border:2px solid red;
 }
 .wine-popup-content{
     position: relative;
@@ -204,7 +207,7 @@ border-radius: 20px;
     cursor: pointer;
 }
 .wine-popup.show{
-    display: block;
+    display: block !important;
 }
 .intensity-bars{
     margin-top: 15px;

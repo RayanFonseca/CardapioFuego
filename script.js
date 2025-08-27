@@ -1,3 +1,4 @@
+// Certifique-se de salvar este arquivo com codificação UTF-8
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const wineCards = document.querySelectorAll('.wine-card');
@@ -17,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Erro: Elemento #searchInput não encontrado.');
         return;
     }
+
+    // Depuração: Verifica se o script está carregando
+    console.log('Script carregado com sucesso');
 
     wineCards.forEach((card) => {
         const title = card.querySelector('h2')?.textContent || '';
@@ -79,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             barMaciez.style.width = `${card.dataset.macie || 50}%`;
             winePopup.classList.add('show');
             console.log('Popup aberto para:', card.querySelector('h2').textContent); // Depuração
+            console.log('Recurso 404 pode estar afetando:', document.querySelectorAll('img[src="./imagens/"]').length); // Depuração de imagens
         });
     });
 
