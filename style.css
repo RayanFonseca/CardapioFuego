@@ -39,7 +39,9 @@ header {
     transition: box-shadow 0.3s ease;
 }
 .search-input:focus{
+    outline: none;
     box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.4);
+    border-radius: 20px;
 }
 h1 {
     color: rgb(163, 91, 91);
@@ -82,7 +84,7 @@ h1 {
     margin-bottom: 20px;
 }
 .tag-btn{
-    background-color: #810d00;
+    background-color: #be0707;
     color: #ffffff;
     border: none;
     padding: 8px 12px;
@@ -93,11 +95,11 @@ h1 {
     font-family: 'Roboto', sans-serif;
 }
 .tag-btn:hover{
-    background-color: #a00d00;
+    background-color: #810d00;
     transform: scale(1.05);
 }
 .tag-btn.active{
-    background-color: #a00d00;
+    background-color: #390505;
 }
 .icon-btn {
     display: inline-flex;
