@@ -50,6 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault(); // evita qualquer comportamento padrão
+    searchInput.value = ''; // limpa o texto da busca
+  }
+});
 
   // =====================
   // FILTRO POR TAGS

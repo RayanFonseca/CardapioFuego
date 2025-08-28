@@ -81,6 +81,9 @@ header { text-align: center; margin-bottom: 20px; }
   cursor: pointer;
   position: relative;
   padding-bottom: 6px;           /* menos espaço interno na base */
+  /*MARCA D'AGUA*/
+  background-image: url(imagens/casa_fuego_logo_80px.png);
+  background-repeat: no-repeat;
 }
 .wine-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.5); }
 
