@@ -167,41 +167,84 @@ header { text-align: center; margin-bottom: 20px; }
   font-size: 1.2rem; cursor: pointer;
 }
 .popup-title{
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   padding-bottom: 10px;
   margin-bottom: 15px;
   box-shadow: #2e0b0b;
 }
 .popup-harmonizacao{
 font-size: 0.7rem;
-border: 0.5px solid #909090;
 padding: 5px;
 border-radius: 10px;
-background: rgba(212, 160, 23, 0.1);
+background: rgba(255, 160, 23, 0.15);
 box-shadow:
-inset 0.1px 0.1px 5px rgba(0, 0, 0, 0.8),
-inset -0.1px -0.1px 1px rgba(0, 0, 0, 0.7),
-0 4px 12px rgba(0, 0, 0, 0.15);
+   inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+   inset -4px -4px 8px rgba(212, 160, 23, 0.15);
 margin-bottom: 10px;
 }
 .popup-comentario{
   font-size: 0.9rem;
   font-style: italic;
-  border: 3px solid rgba(130, 3, 3, 0.286);
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 15px;
   background: rgba(212, 160, 23, 0.1);
-  box-shadow: inset 0.1px 0.1px 5px rgba(8, 8, 7, 0.1),
-inset -0.1px -0.1px 1px rgba(0, 0, 0, 0.1),
-0 4px 12px rgba(212, 160, 23, 0.1);
+  box-shadow:
+   inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+   inset -4px -4px 8px rgba(212, 160, 23, 0.15);
+   
 }
+#popupComentario {
+  display: inline-block; /* mantém o texto como um bloco ajustável */
+  position: relative;
+  font-style: italic; /* opcional, dá aquele charme de citação */
+  line-height: 1.6;
+}
+
+#popupComentario::before {
+  content: "“";
+  position: absolute;
+  left:-7px;   /* distancia horizontal */
+  top: -6px;     /* sobe um pouco pra alinhar bonito */
+  font-size: 1.6rem;
+  color: rgba(129, 13, 0, 0.7);
+  font-weight: bold;
+}
+
+#popupComentario::after {
+  content: "”";
+  position: relative;
+  right: -6px;  /* dá um espacinho depois do texto */
+  top: 4px;     /* abaixa um pouco a aspa */
+  font-size: 1.6rem;
+  color: rgba(129, 13, 0, 0.7);
+  font-weight: bold;
+}
+
 /* Barras intensidade */
 .intensity-bars { margin-top: 12px; }
 .intensity-bar { margin: 8px 0; text-align: left; }
 .intensity-bar span { display: inline-block; width: 80px; font-size: 0.9rem; }
-.bar-container { display: inline-block; width: 150px; height: 10px; background: #eee; border-radius: 5px; overflow: hidden; vertical-align: middle; }
-.bar { height: 100%; background: #810d00; transition: width 0.3s ease; }
+.bar-container { 
+  display: inline-block; 
+  width: 150px; 
+  height: 10px; 
+  background: #eee; 
+  border-radius: 6px; 
+  overflow: hidden; 
+  vertical-align: middle; 
+  /*relevo sutil*/
+  box-shadow: 
+  inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+  inset -3px -3px 6px rgba(255, 255, 255, 0.9),
+}
+.bar { 
+  height: 100%; 
+  border-radius: 6px;
+  background: linear-gradient(90deg, #810d00, #a00d00); 
+  transition: width 0.3s ease; 
+}
 
 /* ===== Mobile: 1 card por linha ===== */
 @media (max-width: 600px) {
