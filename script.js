@@ -118,6 +118,9 @@ searchInput.addEventListener('keydown', (e) => {
       barSeco.style.width      = `${card.dataset.seco     || 0}%`;
       barMaciez.style.width    = `${card.dataset.maciez   || 0}%`;
 
+      const comentario = card.dataset.comentario || 'Um toque Especial';
+      document.getElementById('popupComentario').textContent = comentario;
+
       winePopup.classList.add('show');
     });
   });

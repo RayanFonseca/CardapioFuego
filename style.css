@@ -162,7 +162,30 @@ header { text-align: center; margin-bottom: 20px; }
   background: none; border: none; color: #810d00;
   font-size: 1.2rem; cursor: pointer;
 }
-
+.popup-title{
+  font-size: 1.1rem;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  box-shadow: #2e0b0b;
+}
+.popup-harmonizacao{
+font-size: 1rem;
+border: 2px solid #909090;
+padding: 5px;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.76);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.popup-comentario{
+  font-size: 0.9rem;
+  font-style: italic;
+  border: 3px solid #810d00;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: rgba(212, 160, 23, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 /* Barras intensidade */
 .intensity-bars { margin-top: 12px; }
 .intensity-bar { margin: 8px 0; text-align: left; }
