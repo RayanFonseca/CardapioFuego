@@ -24,13 +24,14 @@
     <datalist id="wineSuggestion"></datalist> <!-- Sugestões automáticas -->
 
     <!-- Botões de filtro -->
-    <div class="tag-filter">
-      <button class="tag-btn" data-filter="all">Todos</button>
-      <button class="tag-btn" data-filter="tinto">Tinto</button>
-      <button class="tag-btn" data-filter="rosé">Rosé</button>
-      <button class="tag-btn" data-filter="espumante">Espumante</button>
-      <button class="tag-btn" data-filter="chardonnay">Chardonnay</button>
-    </div>
+    <section class="tag-filter">
+  <button class="tag-btn" data-filter="all">Todos</button>
+  <button class="tag-btn" data-filter="tinto">Tinto</button>
+  <button class="tag-btn" data-filter="rosé">Rosé</button>
+  <button class="tag-btn" data-filter="espumante">Espumante</button>
+  <button class="tag-btn" data-filter="chardonnay">Chardonnay</button>
+  <button class="tag-btn" data-filter="branco">Branco</button>
+</section>
   </header>
 
   <!-- ================= LISTA DE VINHOS ================= -->
@@ -54,7 +55,7 @@
          data-pais="chile" 
          data-harmonizacao="Churrasco argentino" 
          data-leveza="20" data-suavidade="60" data-seco="70" data-maciez="40">
-      <img src="./imagens/clasicodeitado.jpg" alt="Clásico Cabernet Sauvignon" onerror="this.src='./imagens/placeholder.jpg'" />
+      <img src="./imagens/clasicodeitado.jpg" alt="Clásico Cabernet Sauvignon"/>
       <h2>Clásico <span class="flag-icon flag-icon-cl country-flag"></span></h2>
       <span class="valor">R$ 45,00</span>
     </div>
@@ -85,7 +86,7 @@
 
     <!-- Card 5 -->
     <div class="wine-card" 
-         data-type="tinto" 
+         data-type="rosé" 
          data-uva="castelao" 
          data-pais="portugal" 
          data-harmonizacao="Queijos leves" 

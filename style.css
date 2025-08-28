@@ -43,7 +43,7 @@ header {
   box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.4);
 }
 
-.tag.filter {
+.tag-filter {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -237,6 +237,9 @@ header {
   height: 100%;
   background: #810d00;
   transition: width 0.3s ease;
+}
+.hidden{
+  display: none;
 }
 
 /* ====== CELULAR: 1 CARD POR LINHA ====== */

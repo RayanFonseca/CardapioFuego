@@ -1,3 +1,8 @@
+// Função para remover acentos
+function removerAcentos(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------
   // Seletores principais
@@ -31,17 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   searchInput.addEventListener('input', (e) => {
-    const term = e.target.value.trim().toLowerCase();
+  const term = removerAcentos(e.target.value.trim());
+  console.log('Termo digitado (sem acentos):', term); // Depuração
 
-    wineCards.forEach((card) => {
-      const title = card.querySelector('h2')?.textContent.toLowerCase() || '';
-      if (title.includes(term)) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
+  wineCards.forEach((card) => {
+    const titleWithAccents = card.querySelector('h2')?.textContent || ''; // Título original
+    const title = removerAcentos(titleWithAccents); // Remove acentos do título
+    console.log('Título do card (sem acentos):', title); // Depuração
+    if (title.includes(term)) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
   });
+});
 
   // =====================
   // FILTRO POR TAGS
