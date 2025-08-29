@@ -27,7 +27,7 @@
     <section class="tag-filter">
   <button class="tag-btn" data-filter="all">Todos</button>
   <button class="tag-btn" data-filter="tinto">Tinto</button>
-  <button class="tag-btn" data-filter="rosé">Rosé</button>
+  <button class="tag-btn" data-filter="rosé" disabled>Rosé</button>
   <button class="tag-btn" data-filter="branco">Branco</button>
   <button class="tag-btn" data-filter="chardonnay">Chardonnay</button>
   <button class="tag-btn" data-filter="espumante">Espumante</button>
@@ -46,7 +46,7 @@
        data-leveza="30" data-suavidade="70" data-seco="60" data-maciez="50">
     <img src="./imagens/zapatadeitada.jpg" alt="Angelica Zapata" loading="lazy"/>
     <h2>Angelica Zapata <span class="flag-icon flag-icon-ar country-flag"></span></h2>
-    <span class="uva-label">Tinto</span>
+    <span class="uva-label">Malbec</span>
     <span class="valor">R$ 45,00</span>
   </div>
 
@@ -60,7 +60,7 @@
        data-leveza="20" data-suavidade="60" data-seco="70" data-maciez="40">
     <img src="./imagens/clasicodeitado.jpg" alt="Clásico Cabernet Sauvignon" loading="lazy" />
     <h2>Clásico <span class="flag-icon flag-icon-cl country-flag"></span></h2>
-    <span class="uva-label">Tinto</span>
+    <span class="uva-label">Malbec</span>
     <span class="valor">R$ 45,00</span>
   </div>
 
@@ -74,7 +74,7 @@
        data-leveza="50" data-suavidade="80" data-seco="40" data-maciez="60">
     <img src="./imagens/elenemigo deitado.jpg" alt="El Enemigo" loading="lazy" onerror="this.src='./imagens/placeholder.jpg'" />
     <h2>El Enemigo <span class="flag-icon flag-icon-ar country-flag"></span></h2>
-    <span class="uva-label">Tinto</span>
+    <span class="uva-label">Arinto, Síria e Fernão Pires</span>
     <span class="valor">R$ 45,00</span>
   </div>
 
@@ -88,7 +88,7 @@
        data-leveza="70" data-suavidade="90" data-seco="30" data-maciez="70">
     <img src="./imagens/castelodeitadobranco.jpg" alt="Castelo de Estremoz" loading="lazy" onerror="this.src='./imagens/placeholder.jpg'" />
     <h2>Castelo de Estremoz <span class="flag-icon flag-icon-pt country-flag"></span></h2>
-    <span class="uva-label">Branco</span>
+    <span class="uva-label">Arinto, Síria e Fernão Pires</span>
     <span class="valor">R$ 45,00</span>
   </div>
 
@@ -102,7 +102,7 @@
        data-leveza="60" data-suavidade="85" data-seco="50" data-maciez="65">
     <img src="./imagens/confidencialdeitado.jpg" alt="Confidencial" loading="lazy" />
     <h2>Confidencial <span class="flag-icon flag-icon-pt country-flag"></span></h2>
-    <span class="uva-label">Tinto</span>
+    <span class="uva-label">Castelao</span>
     <span class="valor">R$ 45,00</span>
   </div>
 
@@ -144,22 +144,50 @@
   <div class="wine-popup-content">
     <button class="close-popup">X</button>
     <h3 id="popupTitle" class="popup-title">Nome do Vinho</h3>
-    <div class="intensity-bars"> 
-      <div class="intensity-bar">
-        <span>Leveza</span>
-        <div class="bar-container"><div id="barLeveza" class="bar"></div></div>
+    <div class="intensity-bars">
+      <div class="intensity-item">
+        <span class="intensity-start">Leve</span>
+        <div class="intensity-bar-container">
+          <div class="intensity-mini-bar" data-level="1"></div>
+          <div class="intensity-mini-bar" data-level="2"></div>
+          <div class="intensity-mini-bar" data-level="3"></div>
+          <div class="intensity-mini-bar" data-level="4"></div>
+          <div class="intensity-mini-bar" data-level="5"></div>
+        </div>
+        <span class="intensity-end">Intenso</span>
       </div>
-      <div class="intensity-bar">
-        <span>Suavidade</span>
-        <div class="bar-container"><div id="barSuavidade" class="bar"></div></div>
+      <div class="intensity-item">
+        <span class="intensity-start">Suave</span>
+        <div class="intensity-bar-container">
+          <div class="intensity-mini-bar" data-level="1"></div>
+          <div class="intensity-mini-bar" data-level="2"></div>
+          <div class="intensity-mini-bar" data-level="3"></div>
+          <div class="intensity-mini-bar" data-level="4"></div>
+          <div class="intensity-mini-bar" data-level="5"></div>
+        </div>
+        <span class="intensity-end">Tânico</span>
       </div>
-      <div class="intensity-bar">
-        <span>Seco</span>
-        <div class="bar-container"><div id="barSeco" class="bar"></div></div>
+      <div class="intensity-item">
+        <span class="intensity-start">Seco</span>
+        <div class="intensity-bar-container">
+          <div class="intensity-mini-bar" data-level="1"></div>
+          <div class="intensity-mini-bar" data-level="2"></div>
+          <div class="intensity-mini-bar" data-level="3"></div>
+          <div class="intensity-mini-bar" data-level="4"></div>
+          <div class="intensity-mini-bar" data-level="5"></div>
+        </div>
+        <span class="intensity-end">Doce</span>
       </div>
-      <div class="intensity-bar">
-        <span>Maciez</span>
-        <div class="bar-container"><div id="barMaciez" class="bar"></div></div>
+      <div class="intensity-item">
+        <span class="intensity-start">Macio</span>
+        <div class="intensity-bar-container">
+          <div class="intensity-mini-bar" data-level="1"></div>
+          <div class="intensity-mini-bar" data-level="2"></div>
+          <div class="intensity-mini-bar" data-level="3"></div>
+          <div class="intensity-mini-bar" data-level="4"></div>
+          <div class="intensity-mini-bar" data-level="5"></div>
+        </div>
+        <span class="intensity-end">Ácido</span>
       </div>
     </div>
     <p class="popup-harmonizacao">

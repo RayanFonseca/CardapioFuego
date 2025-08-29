@@ -18,11 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const closePopup = document.querySelector('.close-popup');
   const popupTitle = document.getElementById('popupTitle');
   const popupHarmonizacao = document.getElementById('popupHarmonizacao');
-  const barLeveza = document.getElementById('barLeveza');
-  const barSuavidade = document.getElementById('barSuavidade');
-  const barSeco = document.getElementById('barSeco');
-  const barMaciez = document.getElementById('barMaciez');
   const popupComentario = document.getElementById('popupComentario');
+
+  // Seletor para as mini-barras
+  const barLevezaContainer = document.querySelector('.intensity-item:nth-child(1) .intensity-bar-container');
+  const barSuavidadeContainer = document.querySelector('.intensity-item:nth-child(2) .intensity-bar-container');
+  const barSecoContainer = document.querySelector('.intensity-item:nth-child(3) .intensity-bar-container');
+  const barMaciezContainer = document.querySelector('.intensity-item:nth-child(4) .intensity-bar-container');
 
   // =====================
   // AUTOCOMPLETE PESQUISA
@@ -65,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tagBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       const filterValue = btn.dataset.filter.toLowerCase();
+      console.log('Filtro aplicado:', filterValue);
 
       tagBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
@@ -73,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardType = card.dataset.type.toLowerCase();
         const cardUva = card.dataset.uva.toLowerCase();
         const cardPais = card.dataset.pais.toLowerCase();
+        console.log('Card:', card.querySelector('h2').textContent, 'Type:', cardType, 'Uva:', cardUva, 'Pais:', cardPais);
+
+        card.classList.add('hidden');
 
         if (
           filterValue === 'all' ||
@@ -81,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
           cardPais === filterValue
         ) {
           card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
         }
       });
     });
@@ -115,11 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (popupTitle) popupTitle.textContent = card.querySelector('h2').textContent;
       if (popupHarmonizacao) popupHarmonizacao.textContent = card.dataset.harmonizacao || 'Não informado';
 
-      // Barras de intensidade (com fallback de 0 se não houver dado)
-      if (barLeveza) barLeveza.style.width = `${card.dataset.leveza || 0}%`;
-      if (barSuavidade) barSuavidade.style.width = `${card.dataset.suavidade || 0}%`;
-      if (barSeco) barSeco.style.width = `${card.dataset.seco || 0}%`;
-      if (barMaciez) barMaciez.style.width = `${card.dataset.maciez || 0}%`;
+      // Atualizar mini-barras de intensidade (0 a 5 níveis)
+      updateMiniBars(barLevezaContainer, card.dataset.leveza || 0);
+      updateMiniBars(barSuavidadeContainer, card.dataset.suavidade || 0);
+      updateMiniBars(barSecoContainer, card.dataset.seco || 0);
+      updateMiniBars(barMaciezContainer, card.dataset.maciez || 0);
 
       // Comentário exclusivo do sommelier
       const comentario = card.dataset.comentario || 'Um toque especial para elevar sua experiência.';
@@ -132,6 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (winePopup) winePopup.classList.add('show');
     });
   });
+
+  // Função para atualizar as mini-barras
+  function updateMiniBars(container, value) {
+    const miniBars = container.querySelectorAll('.intensity-mini-bar');
+    const level = Math.min(5, Math.max(0, Math.round((value / 100) * 5))); // Converte 0-100% para 0-5 níveis
+    miniBars.forEach((bar, index) => {
+      bar.classList.toggle('filled', index < level);
+    });
+  }
 
   // Fechar no botão X
   if (closePopup) {
@@ -150,8 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Carregamento Infinito
-  let winesLoaded = 5; // Inicia com 5 vinhos visíveis
-  const winesPerLoad = 5; // Carrega 5 a cada vez
+  let winesLoaded = 5;
+  const winesPerLoad = 5;
 
   function loadMoreWines() {
     const totalWines = wineCards.length;
@@ -159,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nextWines.forEach(card => card.style.display = 'block');
     winesLoaded += nextWines.length;
 
-    // Remove o observer se todos os vinhos foram carregados
     if (winesLoaded >= totalWines) {
       observer.unobserve(sentinel);
     }
@@ -174,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(sentinel);
 
-  // Inicialmente, esconde os vinhos além dos 5 primeiros
   wineCards.forEach((card, index) => {
     if (index >= 5) card.style.display = 'none';
   });
