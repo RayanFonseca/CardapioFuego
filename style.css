@@ -99,15 +99,21 @@ header { text-align: center; margin-bottom: 20px; }
   display: block;
 }
 
-.wine-card h2 {
+.wine-title{
   font-size: 1.2rem;
   font-style: italic;
   margin: 6px 10px 2px;
   text-align: center;
   color: rgb(84, 10, 10);
   line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
-
+.wine-tittle h2{
+  margin: 0;
+}
 .country-flag {
   margin-left: 8px;
   padding-bottom: 10px;
