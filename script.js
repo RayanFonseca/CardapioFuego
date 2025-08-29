@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Enter') {
       e.preventDefault();
       searchInput.value = '';
+      searchInput.blur();
     }
   });
 
