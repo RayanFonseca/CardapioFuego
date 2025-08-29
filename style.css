@@ -295,6 +295,25 @@ margin-bottom: 10px;
   background-color: #a00d00;
   transition: background-color 0.3s ease;
 }
+.footer {
+  text-align: center;
+  padding: 2px 0;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+  
+}
+
+.footer a {
+  color: inherit;       /* mesma cor do texto */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #a00016; /* ou outra cor */
+}
 
 /* ===== Mobile: 1 card por linha ===== */
 @media (max-width: 600px) {
