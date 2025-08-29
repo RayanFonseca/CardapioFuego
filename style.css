@@ -314,6 +314,10 @@ margin-bottom: 10px;
   text-decoration: underline;
   color: #a00016; /* ou outra cor */
 }
+/* Remove highlight azul no mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
 
 /* ===== Mobile: 1 card por linha ===== */
 @media (max-width: 600px) {
