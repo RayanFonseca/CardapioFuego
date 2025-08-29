@@ -82,8 +82,9 @@ header { text-align: center; margin-bottom: 20px; }
   position: relative;
   padding-bottom: 6px;           /* menos espaço interno na base */
   /*MARCA D'AGUA*/
-  background-image: url(imagens/casa_fuego_logo_80px.png);
+  background-image: url(imagens/fundopopup.png);
   background-repeat: no-repeat;
+  background-position: bottom;
 }
 .wine-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.5); }
 
@@ -251,6 +252,20 @@ margin-bottom: 10px;
   border-radius: 6px;
   background: linear-gradient(90deg, #810d00, #a00d00); 
   transition: width 0.3s ease; 
+}
+.uva-label{
+  display: block;
+  font-family: 'Roboto'n sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #810d00;
+  text-align: center;
+  margin: 2px 10px 6px;
+  background: rgba(212, 160, 23, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== Mobile: 1 card por linha ===== */
