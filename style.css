@@ -47,7 +47,7 @@ header { text-align: center; margin-bottom: 20px; }
   flex-wrap: wrap;
 }
 .tag-btn {
-  background-color: #be0707;
+  background-color: #810d00;
   color: #ffffff;
   border: none;
   padding: 8px 12px;
@@ -159,7 +159,7 @@ header { text-align: center; margin-bottom: 20px; }
   transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 1000;
 }
-.back-to-top:hover { background-color: #a00d00; transform: translateY(15px); }
+.back-to-top:hover { background-color: #810d00; transform: translateY(15px); }
 .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* ===== Popup ===== */
@@ -292,7 +292,7 @@ margin-bottom: 10px;
   margin: 0 1%;
 }
 .intensity-mini-bar.filled{
-  background-color: #a00d00;
+  background-color: #810d00;
   transition: background-color 0.3s ease;
 }
 .footer {
@@ -300,7 +300,7 @@ margin-bottom: 10px;
   padding: 2px 0;
   margin-top: 40px;
   font-size: 14px;
-  color: #666;
+  color: #ffffff;
   
 }
 
