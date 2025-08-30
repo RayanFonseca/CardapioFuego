@@ -38,26 +38,91 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  searchInput.addEventListener('input', (e) => {
-    const term = removerAcentos(e.target.value.trim());
-    console.log('Termo digitado (sem acentos):', term);
+  // =====================
+  // VARIÁVEIS PARA FILTROS E BUSCA
+  // =====================
+  let currentFilter = 'all';
+  let currentSearch = '';
+  let filteredCards = Array.from(wineCards); // Inicialmente, todos os cards
+  let winesLoaded = 0;
+  const winesPerLoad = 5;
 
-    wineCards.forEach((card) => {
-      const titleWithAccents = card.querySelector('h2')?.textContent || '';
-      const title = removerAcentos(titleWithAccents);
-      console.log('Título do card (sem acentos):', title);
-      if (title.includes(term)) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
+  // Função para atualizar a lista de cards filtrados
+  function updateFilteredCards() {
+    filteredCards = Array.from(wineCards).filter(card => {
+      const title = removerAcentos(card.querySelector('h2')?.textContent || '');
+      const type = removerAcentos(card.dataset.type || '').toLowerCase();
+      const uva = removerAcentos(card.dataset.uva || '').toLowerCase();
+      const pais = removerAcentos(card.dataset.pais || '').toLowerCase();
+
+      // Verificar se corresponde à busca
+      const matchesSearch = currentSearch ? title.includes(currentSearch) : true;
+
+      // Verificar se corresponde ao filtro de tag
+      let matchesFilter = currentFilter === 'all';
+      if (!matchesFilter) {
+        // Para uvas, verificar cada uma separada por vírgula
+        const uvas = uva.split(',').map(u => u.trim());
+        matchesFilter = type.includes(currentFilter) || 
+                        uvas.some(u => u.includes(currentFilter)) || 
+                        pais.includes(currentFilter);
       }
+
+      return matchesSearch && matchesFilter;
     });
+  }
+
+  // Função para carregar mais vinhos (apenas os filtrados)
+  function loadMoreWines() {
+    const nextWines = filteredCards.slice(winesLoaded, winesLoaded + winesPerLoad);
+    nextWines.forEach(card => {
+      card.style.display = 'block';
+      card.classList.remove('hidden');
+    });
+    winesLoaded += nextWines.length;
+
+    if (winesLoaded >= filteredCards.length) {
+      observer.unobserve(sentinel);
+    }
+  }
+
+  // Função para aplicar filtros e resetar o carregamento
+  function applyFilters() {
+    // Esconder todos os cards
+    wineCards.forEach(card => {
+      card.style.display = 'none';
+      card.classList.add('hidden');
+    });
+
+    // Resetar contagem de carregados
+    winesLoaded = 0;
+
+    // Atualizar lista filtrada
+    updateFilteredCards();
+
+    // Carregar o primeiro lote
+    loadMoreWines();
+
+    // Observar o sentinel novamente se necessário
+    if (winesLoaded < filteredCards.length) {
+      observer.observe(sentinel);
+    }
+  }
+
+  // =====================
+  // EVENTO DE BUSCA
+  // =====================
+  searchInput.addEventListener('input', (e) => {
+    currentSearch = removerAcentos(e.target.value.trim());
+    applyFilters();
   });
 
   searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       searchInput.value = '';
+      currentSearch = '';
+      applyFilters();
       searchInput.blur();
     }
   });
@@ -67,29 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // =====================
   tagBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const filterValue = btn.dataset.filter.toLowerCase();
-      console.log('Filtro aplicado:', filterValue);
+      currentFilter = btn.dataset.filter.toLowerCase();
 
       tagBtns.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
 
-      wineCards.forEach((card) => {
-        const cardType = card.dataset.type.toLowerCase();
-        const cardUva = card.dataset.uva.toLowerCase();
-        const cardPais = card.dataset.pais.toLowerCase();
-        console.log('Card:', card.querySelector('h2').textContent, 'Type:', cardType, 'Uva:', cardUva, 'Pais:', cardPais);
-
-        card.classList.add('hidden');
-
-        if (
-          filterValue === 'all' ||
-          cardType === filterValue ||
-          cardUva === filterValue ||
-          cardPais === filterValue
-        ) {
-          card.classList.remove('hidden');
-        }
-      });
+      applyFilters();
     });
   });
 
@@ -116,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // =====================
   wineCards.forEach((card) => {
     card.addEventListener('click', () => {
-      console.log('Clicou no card:', card.querySelector('h2').textContent);
       if (popupTitle) popupTitle.textContent = card.querySelector('h2').textContent;
       if (popupHarmonizacao) popupHarmonizacao.textContent = card.dataset.harmonizacao || 'Não informado';
 
@@ -164,20 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Carregamento Infinito
-  let winesLoaded = 5;
-  const winesPerLoad = 5;
-
-  function loadMoreWines() {
-    const totalWines = wineCards.length;
-    const nextWines = Array.from(wineCards).slice(winesLoaded, winesLoaded + winesPerLoad);
-    nextWines.forEach(card => card.style.display = 'block');
-    winesLoaded += nextWines.length;
-
-    if (winesLoaded >= totalWines) {
-      observer.unobserve(sentinel);
-    }
-  }
-
   const sentinel = document.getElementById('sentinel');
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -185,9 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { threshold: 0.5 });
 
-  observer.observe(sentinel);
-
-  wineCards.forEach((card, index) => {
-    if (index >= 5) card.style.display = 'none';
-  });
+  // Carregamento inicial
+  document.querySelector('.tag-btn[data-filter="all"]').classList.add('active');
+  applyFilters();
 });
