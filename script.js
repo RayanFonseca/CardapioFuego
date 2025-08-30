@@ -191,3 +191,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (index >= 5) card.style.display = 'none';
   });
 });
+function sortWines() {
+  const container = document.querySelector(".container"); // onde ficam os cards
+  const cards = Array.from(container.querySelectorAll(".wine-card"));
+
+  cards.sort((a, b) => {
+    // 1. Ordena pelo tipo (tinto, rosé, branco, etc.)
+    const typeA = a.dataset.type.toLowerCase();
+    const typeB = b.dataset.type.toLowerCase();
+    if (typeA !== typeB) return typeA.localeCompare(typeB);
+
+    // 2. Ordena pelo país
+    const countryA = a.dataset.pais.toLowerCase();
+    const countryB = b.dataset.pais.toLowerCase();
+    if (countryA !== countryB) return countryA.localeCompare(countryB);
+
+    // 3. Ordena pelo nome do vinho
+    const nameA = a.querySelector("h2").textContent.toLowerCase();
+    const nameB = b.querySelector("h2").textContent.toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
+
+  // Recoloca os cards no container na nova ordem
+  cards.forEach(card => container.appendChild(card));
+}
+
+// Executa assim que a página carregar
+document.addEventListener("DOMContentLoaded", sortWines);
