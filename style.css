@@ -130,6 +130,13 @@ header { text-align: center; margin-bottom: 20px; }
   display: block;
   text-align: center;
 }
+.info-icon{
+  position:absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 22px;
+  cursor: default;
+}
 
 .uva-label {
   display: block;
