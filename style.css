@@ -22,22 +22,52 @@ header { text-align: center; margin-bottom: 20px; }
   border-bottom: 2px solid #810d00;
 }
 
+/* === Campo de busca com botão X === */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
 .search-input {
   width: 100%;
   max-width: 600px;
-  padding: 10px 30px;
+  padding: 10px 35px 10px 15px; /* espaço extra para o botão X */
   border: none;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.9);
   color: #1a1a1a;
   font-size: 1rem;
   outline: none;
-  margin: 0 auto 20px;
   display: block;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }
+.search-input::-webkit-calendar-picker-indicator{
+  position: relative;
+  left: 25px;
+  cursor: pointer;
+
+}
 .search-input:focus { box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.4); }
+
+.clear-btn {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #8585856c;
+  padding: 2px 4px;
+  border-color: #8585856c;
+  font-size: 0.9rem;
+  color: #ffffff;
+  cursor: pointer;
+  display: none; /* só aparece quando digitar */
+}
+.clear-btn:hover {
+  color: #390505;
+}
 
 .tag-filter {
   display: flex;
@@ -57,7 +87,7 @@ header { text-align: center; margin-bottom: 20px; }
   font-family: 'Roboto', sans-serif;
 }
 .tag-btn:hover { background-color: #810d00d3; transform: scale(1.05); }
-  .tag-btn.active { background-color: #390505; }
+.tag-btn.active { background-color: #390505; }
 .tag-btn:focus { outline: none; box-shadow: 0 0 0 1px rgba(212,160,23,0.4); border-radius: 20px; }
 .tag-btn:disabled {
   background-color: #6e0a0a;
@@ -66,7 +96,7 @@ header { text-align: center; margin-bottom: 20px; }
 }
 
 .country-btn {
-  background-color: #810d00; /* verde para diferenciar dos tipos */
+  background-color: #810d00;
   color: #ffffff;
   border: none;
   padding: 8px 12px;
@@ -75,10 +105,8 @@ header { text-align: center; margin-bottom: 20px; }
   transition: background-color 0.2s, transform 0.1s;
   font-family: 'Roboto', sans-serif;
 }
-
 .country-btn:hover { background-color: #810d00d3; transform: scale(1.05); }
 .country-btn.active { background-color: #390505; }
-
 
 /* ===== Grid ===== */
 /* Desktop/Tablet: 2 cards por linha */
@@ -126,9 +154,8 @@ header { text-align: center; margin-bottom: 20px; }
   justify-content: center;
   gap: 8px;
 }
-.wine-tittle h2{
-  margin: 0;
-}
+.wine-tittle h2{ margin: 0; }
+
 .country-flag {
   margin-left: 8px;
   padding-bottom: 10px;
@@ -168,9 +195,7 @@ header { text-align: center; margin-bottom: 20px; }
   box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.hidden { 
-  display: none !important; 
-}
+.hidden { display: none !important; }
 
 /* ===== Botão topo ===== */
 .back-to-top {
@@ -212,208 +237,83 @@ header { text-align: center; margin-bottom: 20px; }
   position: relative;
   background-image: url(imagens/fundopopup.png);
 }
-
 .close-popup {
   position: absolute; top: 10px; right: 10px;
   background: none; border: none; color: #810d00;
   font-size: 1.2rem; cursor: pointer;
 }
-.popup-title{
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  box-shadow: #2e0b0b;
-}
+.popup-title{ font-size: 1.2rem; font-weight: 600; padding-bottom: 10px; margin-bottom: 15px; }
 .popup-harmonizacao{
-font-size: 0.7rem;
-padding: 5px;
-border-radius: 10px;
-background: rgba(255, 160, 23, 0.15);
-box-shadow:
-   inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-   inset -4px -4px 8px rgba(212, 160, 23, 0.15);
-margin-bottom: 10px;
+  font-size: 0.7rem; padding: 5px; border-radius: 10px;
+  background: rgba(255, 160, 23, 0.15);
+  margin-bottom: 10px;
 }
 .popup-comentario{
-  font-size: 0.9rem;
-  font-style: italic;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 15px;
+  font-size: 0.9rem; font-style: italic; border-radius: 10px;
+  padding: 10px; margin-bottom: 15px;
   background: rgba(212, 160, 23, 0.1);
-  box-shadow:
-   inset 4px 4px 8px rgba(0, 0, 0, 0.15),
-   inset -4px -4px 8px rgba(212, 160, 23, 0.15);
-   
 }
-#popupComentario {
-  display: inline-block;
-  position: relative;
-  font-style: italic;
-  line-height: 1.6;
-}
-
+#popupComentario { display: inline-block; position: relative; font-style: italic; line-height: 1.6; }
 #popupComentario::before {
-  content: "“";
-  position: absolute;
-  left:-7px;
-  top: -6px;
-  font-size: 1.6rem;
-  color: rgba(129, 13, 0, 0.7);
-  font-weight: bold;
+  content: "“"; position: absolute; left:-7px; top: -6px;
+  font-size: 1.6rem; color: rgba(129, 13, 0, 0.7); font-weight: bold;
 }
-
 #popupComentario::after {
-  content: "”";
-  position: relative;
-  right: -6px;
-  top: 4px;
-  font-size: 1.6rem;
-  color: rgba(129, 13, 0, 0.7);
-  font-weight: bold;
+  content: "”"; position: relative; right: -6px; top: 4px;
+  font-size: 1.6rem; color: rgba(129, 13, 0, 0.7); font-weight: bold;
 }
 
 /* Barras intensidade */
-.intensity-bars {
-  margin: 20px 0;
+.intensity-bars { margin: 20px 0; }
+.intensity-item { display: flex; align-items: center; margin-bottom: 15px; }
+.intensity-start, .intensity-end {
+  font-size: 0.9rem; font-family: 'Roboto', sans-serif;
+  font-weight: 500; color:#000000; width: 70px; text-align: center;
 }
-
-.intensity-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.intensity-start,
-.intensity-end {
-  font-size: 0.9rem;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  color:#000000;
-  width: 70px;
-  text-align: center;
-}
-
-.intensity-start {
-  margin-right: 10px;
-}
-
-.intensity-end {
-  margin-left: 10px;
-}
-
+.intensity-start { margin-right: 10px; }
+.intensity-end { margin-left: 10px; }
 .intensity-bar-container {
-  width: 150px;
-  height: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  justify-content:  space-between;
-  flex-grow: 1;
+  width: 150px; height: 10px; border-radius: 10px;
+  overflow: hidden; display: flex; justify-content: space-between; flex-grow: 1;
 }
+.intensity-mini-bar{ width: 20%; height: 100%; background-color: transparent; border-radius: 10px; margin: 0 1%; }
+.intensity-mini-bar.filled{ background-color: #810d00; transition: background-color 0.3s ease; }
 
-.intensity-mini-bar{
-  width: 20%;
-  height: 100%;
-  background-color: transparent;
-  border-radius: 10px;
-  margin: 0 1%;
-}
-.intensity-mini-bar.filled{
-  background-color: #810d00;
-  transition: background-color 0.3s ease;
-}
 .footer {
-  text-align: center;
-  padding: 2px 0;
-  margin-top: 40px;
-  font-size: 14px;
-  color: #ffffff;
-  
+  text-align: center; padding: 2px 0; margin-top: 40px;
+  font-size: 14px; color: #ffffff;
 }
+.footer a { color: inherit; text-decoration: none; font-weight: bold; }
+.footer a:hover { text-decoration: underline; color: #a00016; }
 
-.footer a {
-  color: inherit;       /* mesma cor do texto */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-  color: #a00016; /* ou outra cor */
-}
 /* Remove highlight azul no mobile */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
+* { -webkit-tap-highlight-color: transparent; }
+
 /* ===========================
    FILTROS ORGANIZADOS
 =========================== */
-.filters-container {
-  margin: 20px auto;
-  max-width: 1000px;
-  padding: 0 15px;
-}
-
-.filter-section {
-  margin-bottom: 20px;
-}
-
-.filter-section h3 {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #fff;
-  text-align: left;
-}
+.filters-container { margin: 20px auto; max-width: 1000px; padding: 0 15px; }
+.filter-section { margin-bottom: 20px; }
+.filter-section h3 { font-size: 1rem; font-weight: bold; margin-bottom: 8px; color: #fff; text-align: left; }
 
 /* Tipos centralizados */
-.tag-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
+.tag-filter { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 
 /* Países em scroll horizontal */
 .country-filter {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  scrollbar-width: thin; /* Firefox */
+  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin;
 }
-
-.country-filter::-webkit-scrollbar {
-  height: 6px;
-}
-
-.country-filter::-webkit-scrollbar-thumb {
-  background: #bbb;
-  border-radius: 4px;
-}
+.country-filter::-webkit-scrollbar { height: 6px; }
+.country-filter::-webkit-scrollbar-thumb { background: #bbb; border-radius: 4px; }
 
 /* Botões compactos */
-.tag-btn, .country-btn {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  white-space: nowrap; /* evita quebrar */
-}
-
+.tag-btn, .country-btn { padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; white-space: nowrap; }
 
 /* ===== Mobile: 1 card por linha ===== */
 @media (max-width: 600px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    max-width: 520px;
-  }
-
+  .container { grid-template-columns: 1fr; gap: 18px; max-width: 520px; }
   .wine-card img { height: 230px; }
   .wine-card h2 { font-size: 1.25rem; margin: 6px 8px 2px; }
   .wine-card .valor { font-size: 1.15rem; }
-
   .wine-popup-content { max-width: 360px; }
 }

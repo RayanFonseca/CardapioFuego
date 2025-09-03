@@ -22,8 +22,11 @@
     </div>
 
     <!-- Campo de busca -->
-    <input type="text" id="searchInput" list="wineSuggestion" placeholder="Buscar vinho..." class="search-input" />
-    <datalist id="wineSuggestion"></datalist> <!-- Sugestões automáticas -->
+    <div class="search-wrapper">
+  <input id="searchInput" class="search-input" type="text" placeholder="Pesquisar vinho..." list="wineSuggestion">
+  <button id="clearSearch" class="clear-btn">Limpar Filtro</button>
+  <datalist id="wineSuggestion"></datalist>
+</div>
 
     <!-- Filtros -->
 <div class="filters-container">

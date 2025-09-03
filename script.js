@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tagBtns = document.querySelectorAll('.tag-btn'); // Botões de tipo
   const countryBtns = document.querySelectorAll('.country-btn'); // Botões de país
   const backToTop = document.getElementById('backToTop');
+  const clearSearch = document.getElementById('clearSearch');
 
   // Popup
   const winePopup = document.getElementById('winePopup');
@@ -144,9 +145,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // EVENTO DE BUSCA
   // =====================
   searchInput.addEventListener('input', (e) => {
-    currentSearch = removerAcentos(e.target.value.trim());
-    applyFilters();
-  });
+  currentSearch = removerAcentos(e.target.value.trim());
+  applyFilters();
+
+  // Mostra ou esconde o botão X dinamicamente
+  clearSearch.style.display = searchInput.value ? "block" : "none";
+});
 
   searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
@@ -158,7 +162,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
+//botao del impar pesquisa
+if(clearSearch && searchInput){
+  clearSearch.addEventListener("click", () =>{
+    searchInput.value="";
+    currentSearch="";
+    applyFilters();
+    clearSearch.style.display ="none";
+  })
+}
   // =====================
   // FILTRO POR TIPOS
   // =====================
