@@ -25,25 +25,37 @@
     <input type="text" id="searchInput" list="wineSuggestion" placeholder="Buscar vinho..." class="search-input" />
     <datalist id="wineSuggestion"></datalist> <!-- Sugestões automáticas -->
 
-    <!-- Botões de filtro -->
-    <section class="tag-filter">
-  <button class="tag-btn" data-filter="all">Todos</button>
-  <button class="tag-btn" data-filter="tinto">Tinto</button>
-  <button class="tag-btn" data-filter="rosé" >Rosé</button>
-  <button class="tag-btn" data-filter="branco">Branco</button>
-  <button class="tag-btn" data-filter="espumante">Espumante</button>
-</section>
-<!-- Botões de filtro por país -->
-<section class="country-filter">
-  <button class="country-btn" data-country="all">Todos Países</button>
-  <button class="country-btn" data-country="brasil">Brasil</button>
-  <button class="country-btn" data-country="argentina">Argentina</button>
-  <button class="country-btn" data-country="chile">Chile</button>
-  <button class="country-btn" data-country="italia">Itália</button>
-  <button class="country-btn" data-country="franca">França</button>
-  <button class="country-btn" data-country="espanha">Espanha</button>
-  <button class="country-btn" data-country="portugal">portugal</button>
-</section>
+    <!-- Filtros -->
+<div class="filters-container">
+
+  <!-- Filtro por Tipo -->
+  <div class="filter-section">
+    <h3>Tipos</h3>
+    <div class="tag-filter">
+      <button class="tag-btn" data-filter="all">Todos</button>
+      <button class="tag-btn" data-filter="tinto">Tinto</button>
+      <button class="tag-btn" data-filter="branco">Branco</button>
+      <button class="tag-btn" data-filter="rosé">Rosé</button>
+      <button class="tag-btn" data-filter="espumante">Espumante</button>
+    </div>
+  </div>
+
+  <!-- Filtro por País -->
+  <div class="filter-section">
+    <h3>Países</h3>
+    <div class="country-filter">
+      <button class="country-btn" data-country="all">Todos Países</button>
+      <button class="country-btn" data-country="brasil">Brasil</button>
+      <button class="country-btn" data-country="argentina">Argentina</button>
+      <button class="country-btn" data-country="chile">Chile</button>
+      <button class="country-btn" data-country="portugal">Portugal</button>
+      <button class="country-btn" data-country="espanha">Espanha</button>
+      <button class="country-btn" data-country="franca">França</button>
+      <button class="country-btn" data-country="italia">Itália</button>
+    </div>
+  </div>
+
+</div>
   </header>
 
   <!-- ================= LISTA DE VINHOS ================= -->

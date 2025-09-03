@@ -57,19 +57,12 @@ header { text-align: center; margin-bottom: 20px; }
   font-family: 'Roboto', sans-serif;
 }
 .tag-btn:hover { background-color: #810d00d3; transform: scale(1.05); }
-.tag-btn.active { background-color: #390505; }
+  .tag-btn.active { background-color: #390505; }
 .tag-btn:focus { outline: none; box-shadow: 0 0 0 1px rgba(212,160,23,0.4); border-radius: 20px; }
 .tag-btn:disabled {
   background-color: #6e0a0a;
   cursor: not-allowed;
   opacity: 0.6;
-}
-.country-filter {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 10px 0 20px;
-  flex-wrap: wrap;
 }
 
 .country-btn {
@@ -354,6 +347,61 @@ margin-bottom: 10px;
 * {
   -webkit-tap-highlight-color: transparent;
 }
+/* ===========================
+   FILTROS ORGANIZADOS
+=========================== */
+.filters-container {
+  margin: 20px auto;
+  max-width: 1000px;
+  padding: 0 15px;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-section h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+  text-align: left;
+}
+
+/* Tipos centralizados */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Países em scroll horizontal */
+.country-filter {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin; /* Firefox */
+}
+
+.country-filter::-webkit-scrollbar {
+  height: 6px;
+}
+
+.country-filter::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
+}
+
+/* Botões compactos */
+.tag-btn, .country-btn {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  white-space: nowrap; /* evita quebrar */
+}
+
 
 /* ===== Mobile: 1 card por linha ===== */
 @media (max-width: 600px) {
