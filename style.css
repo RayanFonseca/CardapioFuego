@@ -64,6 +64,28 @@ header { text-align: center; margin-bottom: 20px; }
   cursor: not-allowed;
   opacity: 0.6;
 }
+.country-filter {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0 20px;
+  flex-wrap: wrap;
+}
+
+.country-btn {
+  background-color: #810d00; /* verde para diferenciar dos tipos */
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  font-family: 'Roboto', sans-serif;
+}
+
+.country-btn:hover { background-color: #1a5203; transform: scale(1.05); }
+.country-btn.active { background-color: #0d2f01; }
+
 
 /* ===== Grid ===== */
 /* Desktop/Tablet: 2 cards por linha */
