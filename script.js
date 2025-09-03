@@ -11,24 +11,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const wineCards = document.querySelectorAll('.wine-card');
   const suggestionList = document.getElementById('wineSuggestion');
   const tagBtns = document.querySelectorAll('.tag-btn'); // Botões de tipo
-  const countryBtns = document.querySelectorAll('.country-btn'); // Novos botões de país
+  const countryBtns = document.querySelectorAll('.country-btn'); // Botões de país
   const backToTop = document.getElementById('backToTop');
 
-  // Popup (inalterado)
+  // Popup
   const winePopup = document.getElementById('winePopup');
   const closePopup = document.querySelector('.close-popup');
   const popupTitle = document.getElementById('popupTitle');
   const popupHarmonizacao = document.getElementById('popupHarmonizacao');
   const popupComentario = document.getElementById('popupComentario');
 
-  // Seletor para as mini-barras (inalterado)
+  // Mini-barras
   const barLevezaContainer = document.querySelector('.intensity-item:nth-child(1) .intensity-bar-container');
   const barSuavidadeContainer = document.querySelector('.intensity-item:nth-child(2) .intensity-bar-container');
   const barSecoContainer = document.querySelector('.intensity-item:nth-child(3) .intensity-bar-container');
   const barMaciezContainer = document.querySelector('.intensity-item:nth-child(4) .intensity-bar-container');
 
   // =====================
-  // AUTOCOMPLETE PESQUISA (inalterado)
+  // AUTOCOMPLETE PESQUISA
   // =====================
   wineCards.forEach((card) => {
     const title = card.querySelector('h2')?.textContent || '';
@@ -42,34 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // =====================
   // VARIÁVEIS PARA FILTROS E BUSCA
   // =====================
-  let currentType = 'all'; // Filtro de tipo (tinto, branco, etc.)
-  let currentCountry = 'all'; // Novo: Filtro de país
+  let currentType = 'all';
+  let currentCountry = 'all';
   let currentSearch = '';
-  let filteredCards = Array.from(wineCards); // Inicialmente, todos os cards
+  let filteredCards = Array.from(wineCards);
   let winesLoaded = 0;
-  const winesPerLoad = 5;
+  const winesPerLoad =10;
 
-  // Função para atualizar a lista de cards filtrados
+  // Atualiza lista filtrada
   function updateFilteredCards() {
     filteredCards = Array.from(wineCards).filter(card => {
       const title = removerAcentos(card.querySelector('h2')?.textContent || '');
       const type = removerAcentos(card.dataset.type || '');
       const pais = removerAcentos(card.dataset.pais || '');
 
-      // Verificar se corresponde à busca
       const matchesSearch = currentSearch ? title.includes(currentSearch) : true;
-
-      // Verificar filtro de tipo
       const matchesType = currentType === 'all' || type === currentType;
-
-      // Verificar filtro de país
       const matchesCountry = currentCountry === 'all' || pais === currentCountry;
 
       return matchesSearch && matchesType && matchesCountry;
     });
   }
 
-  // Função para carregar mais vinhos (inalterado)
+  // Carregar mais vinhos
   function loadMoreWines() {
     const nextWines = filteredCards.slice(winesLoaded, winesLoaded + winesPerLoad);
     nextWines.forEach(card => {
@@ -78,12 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     winesLoaded += nextWines.length;
 
+    // Corrigido: só para de observar quando já mostrou todos
     if (winesLoaded >= filteredCards.length) {
-      observer.unobserve(sentinel);
+      if (observer) observer.unobserve(sentinel);
     }
   }
 
-  // Função para aplicar filtros e resetar o carregamento (inalterado)
+  // Aplicar filtros e resetar carregamento
   function applyFilters() {
     wineCards.forEach(card => {
       card.style.display = 'none';
@@ -92,13 +88,15 @@ document.addEventListener('DOMContentLoaded', () => {
     winesLoaded = 0;
     updateFilteredCards();
     loadMoreWines();
+
+    // Corrigido: reativa o observer se ainda tem vinhos para mostrar
     if (winesLoaded < filteredCards.length) {
       observer.observe(sentinel);
     }
   }
 
   // =====================
-  // EVENTO DE BUSCA (inalterado)
+  // EVENTO DE BUSCA
   // =====================
   searchInput.addEventListener('input', (e) => {
     currentSearch = removerAcentos(e.target.value.trim());
@@ -116,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =====================
-  // FILTRO POR TIPOS (tag-btn)
+  // FILTRO POR TIPOS
   // =====================
   tagBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -128,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =====================
-  // NOVO: FILTRO POR PAÍSES (country-btn)
+  // FILTRO POR PAÍSES
   // =====================
   countryBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -140,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =====================
-  // BOTÃO VOLTAR AO TOPO (inalterado)
+  // BOTÃO VOLTAR AO TOPO
   // =====================
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
@@ -158,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =====================
-  // POPUP DOS VINHOS (inalterado)
+  // POPUP DOS VINHOS
   // =====================
   wineCards.forEach((card) => {
     card.addEventListener('click', () => {
@@ -173,8 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const comentario = card.dataset.comentario || 'Um toque especial para elevar sua experiência.';
       if (popupComentario) {
         popupComentario.textContent = comentario;
-      } else {
-        console.error('Elemento popupComentario não encontrado');
       }
 
       if (winePopup) winePopup.classList.add('show');
@@ -203,7 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Carregamento Infinito (inalterado)
+  // =====================
+  // Carregamento Infinito
+  // =====================
   const sentinel = document.getElementById('sentinel');
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -216,30 +214,29 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.country-btn[data-country="all"]').classList.add('active');
   applyFilters();
 });
+
+// =====================
+// Ordenação (inalterado)
+// =====================
 function sortWines() {
-  const container = document.querySelector(".container"); // onde ficam os cards
+  const container = document.querySelector(".container");
   const cards = Array.from(container.querySelectorAll(".wine-card"));
 
   cards.sort((a, b) => {
-    // 1. Ordena pelo tipo (tinto, rosé, branco, etc.)
     const typeA = a.dataset.type.toLowerCase();
     const typeB = b.dataset.type.toLowerCase();
     if (typeA !== typeB) return typeA.localeCompare(typeB);
 
-    // 2. Ordena pelo país
     const countryA = a.dataset.pais.toLowerCase();
     const countryB = b.dataset.pais.toLowerCase();
     if (countryA !== countryB) return countryA.localeCompare(countryB);
 
-    // 3. Ordena pelo nome do vinho
     const nameA = a.querySelector("h2").textContent.toLowerCase();
     const nameB = b.querySelector("h2").textContent.toLowerCase();
     return nameA.localeCompare(nameB);
   });
 
-  // Recoloca os cards no container na nova ordem
   cards.forEach(card => container.appendChild(card));
 }
 
-// Executa assim que a página carregar
 document.addEventListener("DOMContentLoaded", sortWines);
