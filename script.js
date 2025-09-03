@@ -78,18 +78,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Atualiza lista filtrada
   function updateFilteredCards() {
-    filteredCards = Array.from(wineCards).filter(card => {
-      const title = removerAcentos(card.querySelector('h2')?.textContent || '');
-      const type = removerAcentos(card.dataset.type || '');
-      const pais = removerAcentos(card.dataset.pais || '');
+  filteredCards = Array.from(wineCards).filter(card => {
+    const title = removerAcentos(card.querySelector('h2')?.textContent || '');
+    const type = removerAcentos(card.dataset.type || '');
+    const pais = removerAcentos(card.dataset.pais || '');
+    const uva = removerAcentos(card.dataset.uva || '');
+    const comentario = removerAcentos(card.dataset.comentario || '');
 
-      const matchesSearch = currentSearch ? title.includes(currentSearch) : true;
-      const matchesType = currentType === 'all' || type === currentType;
-      const matchesCountry = currentCountry === 'all' || pais === currentCountry;
+    const searchTerm = currentSearch;
 
-      return matchesSearch && matchesType && matchesCountry;
-    });
-  }
+    const matchesSearch = searchTerm
+      ? (
+          // Nome do vinho aceita parte da palavra
+          title.includes(searchTerm) ||
+
+          // Para país, tipo e uva só aceita palavra inteira
+          type === searchTerm ||
+          pais === searchTerm ||
+          uva === searchTerm ||
+
+          // Comentário opcional (pode deixar includes)
+          comentario.includes(searchTerm)
+        )
+      : true;
+
+    const matchesType = currentType === 'all' || type === currentType;
+    const matchesCountry = currentCountry === 'all' || pais === currentCountry;
+
+    return matchesSearch && matchesType && matchesCountry;
+  });
+}
+
+
 
   // Carregar mais vinhos
   function loadMoreWines() {
@@ -129,14 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      searchInput.value = '';
-      currentSearch = '';
-      applyFilters();
-      searchInput.blur();
-    }
-  });
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    // Mantém o valor digitado como filtro
+    currentSearch = removerAcentos(searchInput.value.trim());
+    applyFilters();
+    searchInput.blur();
+  }
+});
+
 
   // =====================
   // FILTRO POR TIPOS
