@@ -3,7 +3,34 @@ function removerAcentos(str) {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
+// =====================
+// Ordenação
+// =====================
+function sortWines() {
+  const container = document.querySelector(".container");
+  const cards = Array.from(container.querySelectorAll(".wine-card"));
+
+  cards.sort((a, b) => {
+    const typeA = a.dataset.type.toLowerCase();
+    const typeB = b.dataset.type.toLowerCase();
+    if (typeA !== typeB) return typeA.localeCompare(typeB);
+
+    const countryA = a.dataset.pais.toLowerCase();
+    const countryB = b.dataset.pais.toLowerCase();
+    if (countryA !== countryB) return countryA.localeCompare(countryB);
+
+    const nameA = a.querySelector("h2").textContent.toLowerCase();
+    const nameB = b.querySelector("h2").textContent.toLowerCase();
+    return nameA.localeCompare(nameB);
+  });
+
+  cards.forEach(card => container.appendChild(card));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // rode a ordenação ANTES de capturar os cards
+  sortWines();
+
   // --------------------------
   // Seletores principais
   // --------------------------
@@ -47,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSearch = '';
   let filteredCards = Array.from(wineCards);
   let winesLoaded = 0;
-  const winesPerLoad =10;
+  const winesPerLoad = 10;
 
   // Atualiza lista filtrada
   function updateFilteredCards() {
@@ -73,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     winesLoaded += nextWines.length;
 
-    // Corrigido: só para de observar quando já mostrou todos
     if (winesLoaded >= filteredCards.length) {
       if (observer) observer.unobserve(sentinel);
     }
@@ -89,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateFilteredCards();
     loadMoreWines();
 
-    // Corrigido: reativa o observer se ainda tem vinhos para mostrar
     if (winesLoaded < filteredCards.length) {
       observer.observe(sentinel);
     }
@@ -203,40 +228,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carregamento Infinito
   // =====================
   const sentinel = document.getElementById('sentinel');
+  let isLoading = false;
+
   const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      loadMoreWines();
+    const entry = entries[0];
+    if (entry.isIntersecting && !isLoading) {
+      isLoading = true;
+      requestAnimationFrame(() => {
+        loadMoreWines();
+        isLoading = false;
+      });
     }
-  }, { threshold: 0.5 });
+  }, {
+    root: null,
+    rootMargin: '600px 0px 800px 0px', // dispara antes de chegar ao fim
+    threshold: 0
+  });
 
   // Carregamento inicial
   document.querySelector('.tag-btn[data-filter="all"]').classList.add('active');
   document.querySelector('.country-btn[data-country="all"]').classList.add('active');
   applyFilters();
 });
-
-// =====================
-// Ordenação (inalterado)
-// =====================
-function sortWines() {
-  const container = document.querySelector(".container");
-  const cards = Array.from(container.querySelectorAll(".wine-card"));
-
-  cards.sort((a, b) => {
-    const typeA = a.dataset.type.toLowerCase();
-    const typeB = b.dataset.type.toLowerCase();
-    if (typeA !== typeB) return typeA.localeCompare(typeB);
-
-    const countryA = a.dataset.pais.toLowerCase();
-    const countryB = b.dataset.pais.toLowerCase();
-    if (countryA !== countryB) return countryA.localeCompare(countryB);
-
-    const nameA = a.querySelector("h2").textContent.toLowerCase();
-    const nameB = b.querySelector("h2").textContent.toLowerCase();
-    return nameA.localeCompare(nameB);
-  });
-
-  cards.forEach(card => container.appendChild(card));
-}
-
-document.addEventListener("DOMContentLoaded", sortWines);
