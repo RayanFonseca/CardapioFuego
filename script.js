@@ -280,6 +280,7 @@ if(clearSearch && searchInput){
 
   // Carregamento inicial
   document.querySelector('.tag-btn[data-filter="all"]').classList.add('active');
-  document.querySelector('.country-btn[data-country="all"]').classList.add('active');
+  const countryAllBtn = document.querySelector('.country-btn[data-country="all"]');
+if (countryAllBtn) countryAllBtn.classList.add('active');
   applyFilters();
 });

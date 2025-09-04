@@ -44,7 +44,7 @@ header { text-align: center; margin-bottom: 20px; }
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
 }
-.search-input::-webkit-calendar-picker-indicator{
+.search-input{
   position: relative;
   left: 25px;
   cursor: pointer;
@@ -154,7 +154,7 @@ header { text-align: center; margin-bottom: 20px; }
   justify-content: center;
   gap: 8px;
 }
-.wine-tittle h2{ margin: 0; }
+.wine-title h2{ margin: 0; }
 
 .country-flag {
   margin-left: 8px;
