@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Cardápio de Vinhos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background:#2e0b0b; color:white; font-family:sans-serif;">
+
+  <h1>Painel do Cardápio 🍇</h1>
+
+  <!-- Área de login -->
+  <div id="loginArea">
+    <input id="email" placeholder="E-mail">
+    <input id="senha" placeholder="Senha" type="password">
+    <button id="loginBtn">Entrar</button>
+  </div>
+
+  <!-- Área do painel -->
+  <div id="adminArea" style="display:none;">
+    <button id="logoutBtn">Sair</button>
+    <h2>Adicionar novo vinho</h2>
+
+    <input id="nome" placeholder="Nome do vinho">
+    <input id="preco" placeholder="Preço" type="number">
+    <input id="tipo" placeholder="Tipo (Tinto, Rosé, etc)">
+    <input id="uva" placeholder="Uva">
+    <input id="pais" placeholder="País">
+    <input id="paisEmoji" placeholder="Bandeira (🇧🇷)">
+    <input type="file" id="fotoInput" accept="image/*">
+    <button id="addBtn">Adicionar vinho</button>
+
+    <h2>Lista de vinhos cadastrados</h2>
+    <div id="listaVinhos"></div>
+  </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
